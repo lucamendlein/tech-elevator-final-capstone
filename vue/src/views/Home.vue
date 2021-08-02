@@ -1,16 +1,14 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
     <div>
-      <splash-page-comp v-if="$store.state.token=''"/>
+      <splash-page-comp/>
     </div>
   </div>
 </template>
 
 <script>
 
-import SplashPageComp from "@/components/SplashPageComp";
+import SplashPageComp from "@/components/SplashPage";
 export default {
   name: "home",
   components: {SplashPageComp}
