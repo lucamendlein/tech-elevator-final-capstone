@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import SplashPage from '../views/SplashPage'
 
 Vue.use(Router)
 
@@ -25,6 +26,14 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/splashpage',
+      name: 'splash-page',
+      component: SplashPage,
       meta: {
         requiresAuth: false
       }

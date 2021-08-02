@@ -4,6 +4,8 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import { BootstrapVue,IconsPlugin } from 'bootstrap-vue'
+import FullpageModal from 'vue-fullpage-modal'
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -14,6 +16,7 @@ Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(FullpageModal)
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 

@@ -4,7 +4,7 @@
 
     <p>You must be authenticated to see this</p>
     <div>
-      <splash-page-comp v-if="$store.state.token=''"/>
+      <splash-page-comp v-if="!$store.state.token"/>
   </div>
 
   </div>
