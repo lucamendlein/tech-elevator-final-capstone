@@ -24,6 +24,14 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'landing-page',
+      component: SplashPage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
