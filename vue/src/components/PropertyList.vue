@@ -1,19 +1,18 @@
 <template>
   <div>
-    <div v-for="property in $store.state.properties" v-bind:key="property.id" :property="property">
-      <div>
-        {{ property.district }}
-      </div>
-    </div>
+    <property-card v-for="property in $store.state.properties" v-bind:key="property.id" :property="property">
+    </property-card>
   </div>
 </template>
 
 <script>
 import PropertyService from "@/services/PropertyService"
+import PropertyCard from "@/components/PropertyCard";
 
 export default {
   name: "property-list",
   components: {
+    PropertyCard
   },
   methods: {
     getProperty() {
