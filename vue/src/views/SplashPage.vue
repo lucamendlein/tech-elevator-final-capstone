@@ -6,7 +6,7 @@
   <div class="words">
     <h1 class="title">Explore, Rent, Manage with GOTHAM - </h1>
       <h2>Take the Riddle Out of Real Estate</h2>
-    <router-link v-bind:to="{ name : 'PropertiesList'}" class="properties">View Available Properties</router-link>
+    <router-link v-bind:to="{ name : 'properties'}" class="properties">View Available Properties</router-link>
     </div>
     
   </div>

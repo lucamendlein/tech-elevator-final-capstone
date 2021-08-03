@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import SplashPage from '../views/SplashPage.vue'
-import PropertiesList from '../views/PropertiesList.vue'
+import Properties from '../views/Properties.vue'
 
 
 Vue.use(Router)
@@ -70,7 +70,7 @@ const router = new Router({
     {
       path: "/properties",
       name: "properties",
-      component: PropertiesList,
+      component: Properties,
       meta: {
         requiresAuth: false
       }
