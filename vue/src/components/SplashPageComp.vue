@@ -14,7 +14,7 @@ export default {
     openModal() {
       this.$FModal.show(
         {component: SplashPage  },
-        { msg: "Welcome to Gotham CIty Real Estate"  }
+        { msg: "Welcome to Gotham City Real Estate"  }
       )
     }
   }
