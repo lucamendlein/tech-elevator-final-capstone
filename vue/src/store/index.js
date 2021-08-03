@@ -19,9 +19,15 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    property: [],
+    filterProperty: ''
   },
   mutations: {
+    GET_PROPERTY_LIST(state, property){
+      state.property = property;
+    }
+    ,
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
