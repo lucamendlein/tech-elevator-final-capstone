@@ -10,9 +10,9 @@
 </template>
 
 <script>
+
 import PropertyService from "@/services/PropertyService"
 import PropertyCard from "@/components/PropertyCard";
-
 export default {
   name: "property-list",
   components: {
@@ -32,33 +32,22 @@ export default {
               console.error("unexpected axios error")
             }
           })
-
     }
   },
   computed: {
     filteredProperties() {
       const properties= this.$store.state.properties;
       const filter= this.$store.state.filterProperty;
-
       return properties.filter(property => {
         return filter ? property.district === filter : true;
-
       })
     }
-
   },
   created() {
     this.getProperty();
   },
-
-
-
   }
-
-
-
 </script>
 
 <style>
-
 </style>
