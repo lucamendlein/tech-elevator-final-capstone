@@ -2,6 +2,10 @@
   <div>
     <property-card v-for="property in $store.state.properties" v-bind:key="property.id" :property="property">
     </property-card>
+    <form>
+      <label></label>
+      <label></label>
+    </form>
   </div>
 </template>
 
@@ -36,24 +40,11 @@ export default {
   },
 
 
-  computed: {
-    filterProperties() {
-      const properties = this.$store.state.properties;
-      const filterProperties = this.$store.state.filterProperties;
-
-
-      return properties.filter((property) => {
-        return filterProperties ? property.state === filterProperties : true;
-
-
-      });
-    }
-
 
   }
 
 
-}
+
 </script>
 
 <style>
