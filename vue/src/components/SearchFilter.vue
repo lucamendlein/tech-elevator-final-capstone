@@ -1,7 +1,9 @@
 <template>
   <div>
-    <select v-model="selectedDistrict" v-on:change="setStartFilter">
-      <option value="">All</option>
+    <label for="District"> Choose District</label>
+    <br>
+    <select id="District" v-model="selectedDistrict" v-on:change="setStartFilter"> District
+      <option value="">All Districts</option>
       <option v-for="district in districtList" :key="district" :value="district">{{district}}</option>
     </select>
   </div>
@@ -27,11 +29,12 @@ export default {
       return uniqueDistricts.sort();
 
     },
-    methods: {
-      setStartFilter() {
-        this.$store.commit('UPDATE_FILTER', this.selectedDistrict)
-      }
 
+
+  },
+  methods: {
+    setStartFilter() {
+      this.$store.commit('UPDATE_FILTER', this.selectedDistrict)
     }
 
   }
@@ -39,10 +42,6 @@ export default {
 }
 
 </script>
-
-
-
-
 
 
 <style>

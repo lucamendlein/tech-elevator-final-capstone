@@ -1,6 +1,6 @@
 <template>
   <div>
-    <property-card v-for="property in $store.state.properties" v-bind:key="property.id" :property="property">
+    <property-card v-for="property in filteredProperties" v-bind:key="property.id" :property="property">
     </property-card>
     <form>
       <label></label>
@@ -34,6 +34,18 @@ export default {
           })
 
     }
+  },
+  computed: {
+    filteredProperties() {
+      const properties= this.$store.state.properties;
+      const filter= this.$store.state.filterProperty;
+
+      return properties.filter(property => {
+        return filter ? property.district === filter : true;
+
+      })
+    }
+
   },
   created() {
     this.getProperty();
