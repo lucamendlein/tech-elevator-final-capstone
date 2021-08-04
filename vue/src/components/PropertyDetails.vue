@@ -12,7 +12,7 @@ export default {
         getProperty() {
             PropertyService.getProperties().then(response => {
                 this.$store.commit('GET_PROPERTY_LIST', response.data)
-                
+
                 console.log(response.data);
                 });
             }

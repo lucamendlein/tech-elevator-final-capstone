@@ -20,12 +20,12 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    property: [],
+    properties: [],
     filterProperty: ''
   },
   mutations: {
-    GET_PROPERTY_LIST(state, property){
-      state.property = property;
+    GET_PROPERTY_LIST(state, properties){
+      state.properties = properties;
     }
     ,
     SET_AUTH_TOKEN(state, token) {

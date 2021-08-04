@@ -1,9 +1,13 @@
 import axios from 'axios';
 
+
+const http = axios.create({baseURL: "/api"})
+
 export default {
 
+
     getProperties(){
-        return axios.get('/properties')
+        return http.get('/properties')
     },
     
 }
