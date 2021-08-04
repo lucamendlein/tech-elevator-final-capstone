@@ -4,10 +4,12 @@ import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class JDBCPropertyDAO implements PropertyDAO{
     private JdbcTemplate jdbcTemplate;
@@ -19,7 +21,7 @@ public class JDBCPropertyDAO implements PropertyDAO{
 
     @Override
     public List<Property> propertyList()  {
-        String sql = "SELECT property_id, address_line_1, address_line_2, district, square_footage, bedrooms, bathrooms, price, pets, floor, studio, available " +
+        String sql = "SELECT property_id, address_line_1, address_line_2, district, square_footage, bedrooms, bathrooms, price, pets, image_url, studio, available " +
                 "FROM property " +
                 "where available is true";
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
@@ -32,7 +34,17 @@ public class JDBCPropertyDAO implements PropertyDAO{
         return propertyList;
     }
 
+    @Override
+    public void createProperty(Property property, String username) {
+        String sql = "insert into property (property_id, address_line_1, address_line_2, district, " +
+                "square_footage, bedrooms, bathrooms, price, pets, studio, available) " +
+                "values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning property_id ";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, property.getAddressLine1(), property.getAddressLine2(), property.getDistrict(), property.getSquareFootage(),
+                 property.getBedrooms(), property.getBathrooms(), property.getPrice(), property.isAllowsPets(), property.isStudio(), property.isAvailable());
+        rows.next();
+        property.setPropertyID(rows.getInt("property_id"));
 
+    }
 
 
     private Property mapRowToProperty(SqlRowSet row){
@@ -44,7 +56,7 @@ public class JDBCPropertyDAO implements PropertyDAO{
         property.setBathrooms(row.getDouble("bathrooms"));
         property.setDistrict(row.getString("district"));
         property.setAllowsPets(row.getBoolean("pets"));
-        property.setFloor(row.getInt("floor"));
+        property.setImageUrl(row.getString("image_url"));
         property.setPrice(row.getDouble("price"));
         property.setSquareFootage(row.getInt("square_footage"));
         property.setStudio(row.getBoolean("studio"));

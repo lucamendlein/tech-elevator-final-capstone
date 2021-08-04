@@ -10,7 +10,7 @@ public class Property {
     private double bathrooms;
     private double price;
     private boolean allowsPets;
-    private int floor;
+    private String imageUrl;
     private boolean isStudio;
     private boolean isAvailable;
 
@@ -18,7 +18,7 @@ public class Property {
     }
 
     public Property(int propertyID, String addressLine1, String addressLine2, String district,
-                    int squareFootage, int bedrooms, double bathrooms, double price, boolean allowsPets, int floor, boolean isStudio, boolean isAvailable) {
+                    int squareFootage, int bedrooms, double bathrooms, double price, boolean allowsPets, String imageUrl, boolean isStudio, boolean isAvailable) {
         this.propertyID = propertyID;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
@@ -28,7 +28,7 @@ public class Property {
         this.bathrooms = bathrooms;
         this.price = price;
         this.allowsPets = allowsPets;
-        this.floor = floor;
+        this.imageUrl = imageUrl;
         this.isStudio = isStudio;
         this.isAvailable = isAvailable;
     }
@@ -105,12 +105,12 @@ public class Property {
         this.allowsPets = allowsPets;
     }
 
-    public int getFloor() {
-        return floor;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public boolean isStudio() {
