@@ -11,10 +11,8 @@ export default {
     methods: {
         getProperty() {
             PropertyService.getProperties().then(response => {
-                if (response.status === 200) {
-                    this.$router.push('/properties');
                 this.$store.commit('GET_PROPERTY_LIST', response.data)
-                }
+                
                 console.log(response.data);
                 });
             }
