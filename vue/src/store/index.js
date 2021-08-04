@@ -24,6 +24,9 @@ export default new Vuex.Store({
     filterProperty: ''
   },
   mutations: {
+    UPDATE_FILTER(state, filterProperty) {
+      state.filterProperty = filterProperty
+    },
     GET_PROPERTY_LIST(state, properties){
       state.properties = properties;
     }
