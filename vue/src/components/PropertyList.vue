@@ -35,12 +35,40 @@ export default {
     }
   },
   computed: {
-    filteredProperties() {
+    filteredProperties() { 
       const properties= this.$store.state.properties;
-      const filter= this.$store.state.filterProperty;
+      const filterDistrict= this.$store.state.filterPropertyDistrict;
+      const filterBedrooms = this.$store.state.filterPropertyBedrooms;
+      const filterBathrooms = this.$store.state.filterPropertyBathrooms;
+      const filterPets = this.$store.state.filterPropertyPets;
+      
+
       return properties.filter(property => {
-        return filter ? property.district === filter : true;
-      })
+        if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == property.allowsPets)) {
+            return property;
+        } else if ((filterDistrict == '') && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == '') && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == property.district) && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == '') && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == property.allowsPets)) {
+          return property;
+        }else if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == '') && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == property.allowsPets)) {
+          return property;
+        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
+          return property;
+        } else if ((filterDistrict == property.district) && (filterBedrooms == '') && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
+          return property;
+        } 
+        
+                
+
+            })
     }
   },
   created() {

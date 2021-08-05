@@ -21,11 +21,23 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     properties: [],
-    filterProperty: ''
+    filterPropertyDistrict: '',
+    filterPropertyBedrooms: '',
+    filterPropertyBathrooms: '',
+    filterPropertyPets: ''
   },
   mutations: {
-    UPDATE_FILTER(state, filterProperty) {
-      state.filterProperty = filterProperty
+    UPDATE_DISTRICT_FILTER(state, filterPropertyDistrict) {
+      state.filterPropertyDistrict = filterPropertyDistrict
+    },
+    UPDATE_BEDROOM_FILTER(state, filterPropertyBedrooms){
+      state.filterPropertyBedrooms = filterPropertyBedrooms
+    },
+    UPDATE_BATHROOM_FILTER(state, filterPropertyBathrooms){
+      state.filterPropertyBathrooms = filterPropertyBathrooms
+    },
+    UPDATE_PET_FILTER(state, filterPropertyPets){
+      state.filterPropertyPets = filterPropertyPets
     },
     GET_PROPERTY_LIST(state, properties){
       state.properties = properties;
