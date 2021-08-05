@@ -24,6 +24,7 @@ export default new Vuex.Store({
     filterPropertyDistrict: '',
     filterPropertyBedrooms: '',
     filterPropertyBathrooms: '',
+    filterPropertyPrice: '',
     filterPropertyPets: ''
   },
   mutations: {
@@ -38,6 +39,10 @@ export default new Vuex.Store({
     },
     UPDATE_PET_FILTER(state, filterPropertyPets){
       state.filterPropertyPets = filterPropertyPets
+    },
+    UPDATE_PRICE_FILTER(state, filterPropertyPrice) {
+      state.filterPropertyPrice = filterPropertyPrice
+
     },
     GET_PROPERTY_LIST(state, properties){
       state.properties = properties;

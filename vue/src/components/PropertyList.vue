@@ -13,6 +13,8 @@
 
 import PropertyService from "@/services/PropertyService"
 import PropertyCard from "@/components/PropertyCard";
+
+
 export default {
   name: "property-list",
   components: {
@@ -21,6 +23,7 @@ export default {
   methods: {
     getProperty() {
       PropertyService.getProperties().then(response => {
+        console.log(response.data);
         this.$store.commit('GET_PROPERTY_LIST', response.data)
       })
           .catch(error => {
@@ -35,46 +38,38 @@ export default {
     }
   },
   computed: {
-    filteredProperties() { 
-      const properties= this.$store.state.properties;
-      const filterDistrict= this.$store.state.filterPropertyDistrict;
-      const filterBedrooms = this.$store.state.filterPropertyBedrooms;
-      const filterBathrooms = this.$store.state.filterPropertyBathrooms;
-      const filterPets = this.$store.state.filterPropertyPets;
-      
+    filteredProperties() {
+      const filteredParams = {
+        "district": this.$store.state.filterPropertyDistrict,
+        "bedrooms": this.$store.state.filterPropertyBedrooms,
+        "bathrooms": this.$store.state.filterPropertyBathrooms,
+        "allowsPets": this.$store.state.filterPropertyPets,
+        "price":this.$store.state.filterPropertyPrice
 
-      return properties.filter(property => {
-        if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == property.allowsPets)) {
-            return property;
-        } else if ((filterDistrict == '') && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == '') && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == property.district) && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == '') && (filterBedrooms == '') && (filterBathrooms == '') && (filterPets == property.allowsPets)) {
-          return property;
-        }else if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == '') && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == property.district) && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == property.allowsPets)) {
-          return property;
-        } else if ((filterDistrict == '') && (filterBedrooms == property.bedrooms) && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
-          return property;
-        } else if ((filterDistrict == property.district) && (filterBedrooms == '') && (filterBathrooms == property.bathrooms) && (filterPets == '')) {
-          return property;
-        } 
-        
-                
-
-            })
+      }
+      let filteredProperties=this.$store.state.properties;
+      Object.keys(filteredParams).forEach(property=>{
+        filteredProperties=filterByJSONProperty(property,filteredParams[property],filteredProperties)
+      });
+      return filteredProperties;
     }
   },
   created() {
     this.getProperty();
   },
-  }
+}
+
+function filterByJSONProperty(property, desiredValue, collection){
+  // console.log()
+  // if (property === property.price && desiredValue <= property.price) {
+  //   return property == desiredValue
+  //
+  //
+  // } else
+  return collection.filter(obj=> {
+    return (obj[property] && obj[property]===desiredValue ) || !desiredValue
+  })
+}
 </script>
 
 <style>

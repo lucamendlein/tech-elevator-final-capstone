@@ -11,20 +11,25 @@
   <!--&lt;!&ndash;   <h3 class="floor">Apt on {{property.floor}}</h3>&ndash;&gt;-->
   <!--    <h3 class="price">${{property.price}} /mo "utilities are not included"</h3>-->
 
-  <div class="card d-flex align-items-center justify-content-center m-2">
+  <div class="builidng-card card d-flex align-items-center justify-content-center m-2">
 
-    <img class="card-img-top" :src="property.imageURL">
+    <img class="card-img-top" :src="property.imageUrl">
     <div class="card-body">
-      <h6 class="card-title">{{ property.addressLine1 }}</h6>
-      <div class="card-text">{{ property.addressLine1 }}</div>
-      <div class="card-text">${{ property.price }} /mo "utilities are not included"</div>
-      <div class="card-text">{{property.bathrooms}} Bath</div>
-      <b-dropdown text="More" variant="outline-info" class="m-1">
-        <b-dropdown-item>{{property.squareFootage}}Sqft</b-dropdown-item>
-        <b-dropdown-item v-if="property.allowsPets">Pet allowed</b-dropdown-item>
-        <b-dropdown-item >{{property.floor}}</b-dropdown-item>
-        <b-dropdown-item v-if="property.studio">Studio</b-dropdown-item>
-      </b-dropdown>
+      <div class="p-2">
+        <h6 class="card-title">{{ property.addressLine1 }}</h6>
+        <div class="card-text">${{ property.price }} /mo "utilities are not included"</div>
+        <div class="card-text">{{ property.bathrooms }} Bath</div>
+      </div>
+      <div >
+        <button
+            class="btn btn-outline-primary float-end"
+            @click="visible = !visible">More
+        </button>
+        <b-collapse class="collapse-con" :visible="visible">
+          <p class="m-0"><b>size: &ensp;</b> {{ property.squareFootage }}Sqft</p>
+          <p class="m-0"><b>size: &ensp;</b> {{ property.squareFootage }}Sqft</p>
+        </b-collapse>
+      </div>
     </div>
   </div>
 
@@ -36,7 +41,12 @@
 export default {
 
   props: ['property'],
-  methods: {}
+  methods: {},
+  data() {
+    return {
+      visible: false
+    }
+  }
 }
 
 </script>
@@ -46,6 +56,19 @@ export default {
 .card-img-top {
   width: 20rem;
   height: 13rem;
+}
+
+.builidng-card {
+  height: fit-content;
+}
+
+.collapse-con {
+
+  padding: 1rem;
+
+}
+.btn:focus {
+  outline: none;
 }
 
 </style>

@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
 public class PropertyController {
     private PropertyDAO propertyDAO;
 
@@ -19,6 +18,7 @@ public class PropertyController {
     }
 
     @RequestMapping( path = "/properties", method = RequestMethod.GET)
+    @ResponseBody
     public List<Property> propertyList(){
         return propertyDAO.propertyList();
     }
