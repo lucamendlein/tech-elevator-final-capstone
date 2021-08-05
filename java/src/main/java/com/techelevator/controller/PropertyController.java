@@ -23,8 +23,8 @@ public class PropertyController {
         return propertyDAO.propertyList();
     }
 
-    @RequestMapping(path = "/properties/manage/{id}", method = RequestMethod.POST)
-    public Property createProperty(@RequestBody Property property, @PathVariable(name = "id")Principal principal) {
+    @RequestMapping(path = "/manage", method = RequestMethod.POST)
+    public Property createProperty(@RequestBody Property property, Principal principal) {
          propertyDAO.createProperty(property, principal.getName());
 
         return property;

@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import SplashPage from '../views/SplashPage.vue'
 import Properties from '../views/Properties.vue'
+import Manage from '../views/Manage.vue'
 
 
 Vue.use(Router)
@@ -73,6 +74,14 @@ const router = new Router({
       component: Properties,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/manage",
+      name: "manage",
+      component: Manage,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
