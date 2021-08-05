@@ -35,7 +35,7 @@
       <div class="p-2 px-4">
         <label class="fw-bold">Price: </label>
         <b-dropdown class="btn btn-outline-primary border-0 bg-transparent text-primary" :text="selectedPrice ? selectedPrice : 'Any'" block variant="outline-primary" >
-          <b-dropdown-item @click="setPropertyPrice(99999999)" class="border-bottom">Any </b-dropdown-item>
+          <b-dropdown-item @click="setPropertyPrice(undefined)" class="border-bottom">Any </b-dropdown-item>
           <b-dropdown-item @click="setPropertyPrice(600)" class="border-bottom">$600 </b-dropdown-item>
           <b-dropdown-item @click="setPropertyPrice(800)" class="border-bottom">$800 </b-dropdown-item>
           <b-dropdown-item @click="setPropertyPrice(1000)" class="border-bottom">$1000 </b-dropdown-item>
