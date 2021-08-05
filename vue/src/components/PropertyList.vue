@@ -44,12 +44,12 @@ export default {
         "bedrooms": this.$store.state.filterPropertyBedrooms,
         "bathrooms": this.$store.state.filterPropertyBathrooms,
         "allowsPets": this.$store.state.filterPropertyPets,
-        "price":this.$store.state.filterPropertyPrice
+        "price": this.$store.state.filterPropertyPrice
 
       }
-      let filteredProperties=this.$store.state.properties;
-      Object.keys(filteredParams).forEach(property=>{
-        filteredProperties=filterByJSONProperty(property,filteredParams[property],filteredProperties)
+      let filteredProperties = this.$store.state.properties;
+      Object.keys(filteredParams).forEach(property => {
+        filteredProperties = filterByJSONProperty(property, filteredParams[property], filteredProperties)
       });
       return filteredProperties;
     }
@@ -59,17 +59,18 @@ export default {
   },
 }
 
-function filterByJSONProperty(property, desiredValue, collection){
-  // console.log()
-  // if (property === property.price && desiredValue <= property.price) {
-  //   return property == desiredValue
-  //
-  //
-  // } else
-  return collection.filter(obj=> {
-    return (obj[property] && obj[property]===desiredValue ) || !desiredValue
+function filterByJSONProperty(prop, desiredValue, collection) {
+   console.log()
+  if (prop === "price") {
+    return collection.filter(obj => {
+      return (obj[prop] && obj[prop] <= desiredValue)
+    })
+  }
+  return collection.filter(obj => {
+    return (obj[prop] && obj[prop] === desiredValue) || !desiredValue
   })
 }
+
 </script>
 
 <style>

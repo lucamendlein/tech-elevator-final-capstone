@@ -16,18 +16,23 @@
     <img class="card-img-top" :src="property.imageUrl">
     <div class="card-body">
       <div class="p-2">
-        <h6 class="card-title">{{ property.addressLine1 }}</h6>
+        <h6 class="card-title">{{property.district}}</h6>
+        <div class="card-title">{{ property.addressLine1 }}</div>
         <div class="card-text">${{ property.price }} /mo "utilities are not included"</div>
-        <div class="card-text">{{ property.bathrooms }} Bath</div>
+        <div class="card-text">{{property.bedrooms}} Bedrooms</div>
       </div>
       <div >
         <button
             class="btn btn-outline-primary float-end"
-            @click="visible = !visible">More
+            @click="visible = !visible"
+
+        >More
         </button>
         <b-collapse class="collapse-con" :visible="visible">
           <p class="m-0"><b>size: &ensp;</b> {{ property.squareFootage }}Sqft</p>
-          <p class="m-0"><b>size: &ensp;</b> {{ property.squareFootage }}Sqft</p>
+          <p class="m-0"><b>Bath: &ensp;</b> {{ property.bathrooms }} </p>
+          <p class="m-0" v-if="property.allowsPets">Pet allowed </p>
+          <p class="m-0" v-if="property.studio">Studio </p>
         </b-collapse>
       </div>
     </div>
