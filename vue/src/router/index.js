@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import SplashPage from '../views/SplashPage.vue'
 import Properties from '../views/Properties.vue'
-import Manage from '../views/Manage'
+import Manage from '../views/Manage.vue'
 
 
 Vue.use(Router)
