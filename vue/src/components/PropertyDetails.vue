@@ -1,6 +1,6 @@
 <template>
   <div>
-      <tr v-for="property in filterProperties" v-bind:key="property.id"></tr>
+      <tr v-for="property in filterPropertiesDistrict" v-bind:key="property.id"></tr>
       </div>
 </template>
 
@@ -20,16 +20,20 @@ export default {
         
     
     computed: {
-        filterProperties() {
+        filterPropertiesDistrict() {
             const property = this.$store.state.property;
-            const filterProperties = this.$store.state.filterProperties;
+            const filterPropertiesDistrict = this.$store.state.filterPropertiesDistrict;
+            const filterPropertiesBedrooms = this.$store.state.filterPropertiesBedrooms;
 
            
 
             return property.filter((property) => {
-                return filterProperties ? property.state === filterProperties : true;
 
+                if (filterPropertiesDistrict && filterPropertiesBedrooms) {
+                    return property.state;
+                }
                 
+
             });
 
             
