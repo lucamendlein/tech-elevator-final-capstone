@@ -24,12 +24,28 @@
           </div>
         </nav>
     </div>
-    <router-view />
+    <main class="main">
+      <router-view />
+    </main>
+
   </div>
 </template>
 <script>
 export default {
 }
 </script>
-<style lang="scss">
+<style>
+
+#app{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main{
+  flex: 1 1 0;
+  background-color: #f1f1f1;
+}
+
 </style>

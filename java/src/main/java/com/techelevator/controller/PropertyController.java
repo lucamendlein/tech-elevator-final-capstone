@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-@CrossOrigin
+
+
 @RestController
+@CrossOrigin
+@RequestMapping("/api")
 public class PropertyController {
     private PropertyDAO propertyDAO;
 
@@ -25,6 +28,7 @@ public class PropertyController {
          propertyDAO.createProperty(property, principal.getName());
 
         return property;
+
     }
 
 }

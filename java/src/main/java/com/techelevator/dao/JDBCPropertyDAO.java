@@ -21,7 +21,7 @@ public class JDBCPropertyDAO implements PropertyDAO{
 
     @Override
     public List<Property> propertyList()  {
-        String sql = "SELECT property_id, address_line_1, address_line_2, district, square_footage, bedrooms, bathrooms, price, pets, image_url, studio, available " +
+        String sql = "SELECT property_id, address_line_1, address_line_2, district, square_footage, bedrooms, bathrooms, price, pets, studio, available, image_url " +
                 "FROM property " +
                 "where available is true";
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);

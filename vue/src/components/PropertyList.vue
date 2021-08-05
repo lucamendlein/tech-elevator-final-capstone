@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container w-100 h-100 d-flex flex-row flex-wrap">
     <property-card v-for="property in filteredProperties" v-bind:key="property.id" :property="property">
     </property-card>
     <form>
