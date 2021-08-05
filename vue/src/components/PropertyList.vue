@@ -51,6 +51,8 @@ export default {
       Object.keys(filteredParams).forEach(property => {
         filteredProperties = filterByJSONProperty(property, filteredParams[property], filteredProperties)
       });
+
+      console.log('filtered list',filteredProperties);
       return filteredProperties;
     }
   },
@@ -60,14 +62,12 @@ export default {
 }
 
 function filterByJSONProperty(prop, desiredValue, collection) {
-   console.log()
-  if (prop === "price") {
-    return collection.filter(obj => {
-      return (obj[prop] && obj[prop] <= desiredValue)
-    })
-  }
+
   return collection.filter(obj => {
-    return (obj[prop] && obj[prop] === desiredValue) || !desiredValue
+    return ( prop === "price"
+        ? (!desiredValue || (parseInt(obj[prop]) <= parseInt(desiredValue))) //for price
+        : (!desiredValue || obj[prop] === desiredValue) //for other props
+    )
   })
 }
 
