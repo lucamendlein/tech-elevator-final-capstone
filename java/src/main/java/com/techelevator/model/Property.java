@@ -125,7 +125,7 @@ public class Property {
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 }
