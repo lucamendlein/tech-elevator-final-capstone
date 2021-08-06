@@ -2,14 +2,14 @@
   <div>
     <AddProperty/>
 
-  </div>
-
+ </div>
+ 
 </template>
 
 <script>
 import AddProperty from "@/components/AddProperty";
 export default {
-  components: {AddProperty}
+components: {AddProperty}
 }
 </script>
 
