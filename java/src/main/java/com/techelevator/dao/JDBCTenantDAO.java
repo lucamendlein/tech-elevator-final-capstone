@@ -16,10 +16,11 @@ public class JDBCTenantDAO implements TenantDAO{
     }
 
     @Override
-    public void requestTenant(Tenant tenant, String username) {
-        String sql = "Insert Into tenant (tenant_id, amount_due, property_id, user_id , approve_tenant)\n" +
-                "        values (default, 0, ?, ?, 'Pending') returning tenant_id";
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, tenant.getPropertyId(), tenant.getUserId() );
+    public void requestTenant(Tenant tenant, String username, int propertyId) {
+        String sql = "Insert Into tenant (tenant_id, amount_due, property_id, user_id , approve_tenant, first_name, last_name, state, number_of_residents, move_in_date, email, occupation)\n" +
+                "        values (default, 0, ?, (select user_id from users where username = ?), 'Pending', ?, ?, ?, ?, ?, ?, ?) returning tenant_id;";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, propertyId, username, tenant.getFirstName(), tenant.getLastName(), tenant.getState(), tenant.getNumberOfResidents(),
+                tenant.getMoveInDate(), tenant.getEmail(), tenant.getOccupation());
         rows.next();
         tenant.setTenantId(rows.getInt("tenant_id"));
 
