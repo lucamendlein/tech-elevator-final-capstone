@@ -59,8 +59,8 @@ public class JDBCPropertyDAO implements PropertyDAO{
         property.setImageUrl(row.getString("image_url"));
         property.setPrice(row.getDouble("price"));
         property.setSquareFootage(row.getInt("square_footage"));
-        property.setStudio(row.getBoolean("studio"));
-        property.setAvailable(row.getBoolean("available"));
+        property.setIsStudio(row.getBoolean("studio"));
+        property.setIsAvailable(row.getBoolean("available"));
 
 
         return property;

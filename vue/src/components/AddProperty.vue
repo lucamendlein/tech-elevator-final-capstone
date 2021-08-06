@@ -4,7 +4,7 @@
       <a href="#" v-on:click.prevent="showForm = true">Add Property</a>
     </div>
      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
-    <form v-on:submit.prevent="submitForm" class="propertyForm" v-if="showForm">
+    <form v-if="showForm" @submit.prevent="submitForm" class="propertyForm">
        <div class="form-group">
         <label for="address-line-1">Address Line 1: </label>
         <input id="address-line-1" type="text" class="form-control" v-model="property.addressLine1">
@@ -34,19 +34,19 @@
         <input id="price" type="number" class="form-control" v-model="property.price">
       </div>
       <div class = "form-group">
-        <b-checkbox for="allows-pet" v-model="property.allowsPets">Allows Pets? </b-checkbox>
+        <input type="checkbox" for="allows-pet" v-model="property.allowsPets">Allows Pets?
       </div>
         <div class = "form-group">
           <label for="image-url">Image URL: </label>
           <input id="image-url" type="text" class ="form-control" v-model="property.imageUrl">
         </div>
         <div class = "form-group">
-          <b-checkbox for="is-studio">Studio? </b-checkbox>
+          <input type="checkbox" for="is-studio" v-model="property.isStudio">Studio? 
         </div>
         <div class = "form-group">
-          <b-checkbox for="isAvailable">Available? </b-checkbox>
+          <input type="checkbox" for="is-available" v-model="property.isAvailable">Available? 
         </div>
-      <button class="btn btn-submit">Submit</button>
+       <button class="btn btn-primary">Submit</button>
     </form>
   </div>
 
@@ -58,52 +58,41 @@ import PropertyService from "@/services/PropertyService";
 
 export default {
   name: "add-property",
-   props: {
-    propertyID: {
-      type: Number,
-      default: 0
-    }
-  },
+  //  props: {
+  //   propertyID: {
+  //     type: Number,
+  //     default: 0
+  //   }
+  // },
   data(){
     return {
       showForm: false,
-      property: {
-        addressLine1: '',
-        addressLine2: '',
-        district: '',
-        squareFootage: '',
-        bedrooms:'',
-        bathrooms: '',
-        price: '',
-        allowsPets: '',
-        imageUrl: '',
-        isStudio:'',
-        isAvailable:''
-      },
+      property: {},
       errorMsg: "",
     };
   },
   methods: {
     submitForm() {
-      const newProperty = {
-        addressLine1: this.property.addressLine1,
-        addressLine2: this.property.addressLine2,
-        district: this.property.district,
-        squareFootage: this.property.squareFootage,
-        bedrooms:this.property.bedrooms,
-        bathrooms: this.property.bathrooms,
-        price: this.property.price,
-        allowsPets: this.property.allowsPets,
-        imageUrl: this.property.imageUrl,
-        isStudio:this.property.isStudio,
-        isAvailable:this.property.isAvailable
-      };
+      // const newProperty = {
+      //   addressLine1: this.property.addressLine1,
+      //   addressLine2: this.property.addressLine2,
+      //   district: this.property.district,
+      //   squareFootage: this.property.squareFootage,
+      //   bedrooms:this.property.bedrooms,
+      //   bathrooms: this.property.bathrooms,
+      //   price: this.property.price,
+      //   allowsPets: this.property.allowsPets,
+      //   imageUrl: this.property.imageUrl,
+      //   isStudio:this.property.isStudio,
+      //   isAvailable:this.property.isAvailable
+      // };
         
-        PropertyService
-          .addProperty(newProperty)
+        PropertyService.addProperty(this.property)
           .then(response => {
-            if (response.status === 201) {
-              this.$router.push(`/properties/${newProperty.propertyId}`);
+            
+            if (response.status === 200 || response.status === 201) {
+              alert("Property successfully added")
+              console.log(response.data)
             }
           })
           .catch(error => {
@@ -154,24 +143,22 @@ export default {
       }
     }
   },
-  created() {
-    if (this.propertyID != 0) {
-      PropertyService
-        .getProperties(this.propertyID)
-        .then(response => {
-          this.property = response.data;
-        })
-        .catch(error => {
-          if (error.response && error.response.status === 404) {
-            alert(
-              "Property not available. This property may have been deleted or you have entered an invalid property ID."
-            );
-            this.$router.push("/");
-          }
-        });
-    }
-  }
-};
+  // created() {
+  //     PropertyService
+  //       .getProperties(this.propertyID)
+  //       .then(response => {
+  //         this.property = response.data;
+  //       })
+  //       .catch(error => {
+  //         if (error.response && error.response.status === 404) {
+  //           alert(
+  //             "Property not available. This property may have been deleted or you have entered an invalid property ID."
+  //           );
+  //           this.$router.push("/");
+  //         }
+  //       });
+  //   }
+  };
 
   
 

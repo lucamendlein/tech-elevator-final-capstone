@@ -18,6 +18,9 @@
                 <router-link v-bind:to="{name: 'register'}" class="nav-link" v-if="!$store.state.token">Register</router-link>
               </li>
               <li class="nav-item">
+                <router-link v-bind:to="{name: 'manage'}" class="nav-link" v-if="$store.state.token != ''">Manage</router-link>
+                </li>
+              <li class="nav-item">
                 <router-link class=" btn btn-outline-secondary nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </li>
             </ul>

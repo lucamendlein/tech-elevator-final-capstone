@@ -57,15 +57,15 @@ public class JDBCPropertyDAOIntegrationTest extends DAOIntegrationTest{
             propertyFromDatabase.setImageUrl(rows.getString("image_url"));
             propertyFromDatabase.setPrice(rows.getDouble("price"));
             propertyFromDatabase.setSquareFootage(rows.getInt("square_footage"));
-            propertyFromDatabase.setStudio(rows.getBoolean("studio"));
-            propertyFromDatabase.setAvailable(rows.getBoolean("available"));
+            propertyFromDatabase.setIsStudio(rows.getBoolean("studio"));
+            propertyFromDatabase.setIsAvailable(rows.getBoolean("available"));
         }
         Assert.assertEquals(propertyFromDatabase.getPropertyID(), property.getPropertyID());
 
     }
 
     private Property getProperty(String addressLine1, String addressLine2, double bathrooms, String district,
-                int bedrooms, double price, int squareFootage, boolean allowsPets, boolean studio, boolean isAvailable){
+                int bedrooms, double price, int squareFootage, boolean allowsPets, boolean isStudio, boolean isAvailable){
         Property property = new Property();
         property.setAddressLine1(addressLine1);
         property.setAddressLine2(addressLine2);
@@ -75,8 +75,8 @@ public class JDBCPropertyDAOIntegrationTest extends DAOIntegrationTest{
         property.setAllowsPets(allowsPets);
         property.setPrice(price);
         property.setSquareFootage(squareFootage);
-        property.setStudio(studio);
-        property.setAvailable(isAvailable);
+        property.setIsStudio(isStudio);
+        property.setIsAvailable(isAvailable);
         return property;
     }
 }
