@@ -117,7 +117,7 @@ public class Property {
         return isStudio;
     }
 
-    public void setStudio(boolean isStudio) {
+    public void setIsStudio(boolean isStudio) {
         this.isStudio = isStudio;
     }
 
@@ -125,7 +125,7 @@ public class Property {
         return isAvailable;
     }
 
-    public void setAvailable(boolean isAvailable) {
+    public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
 }
