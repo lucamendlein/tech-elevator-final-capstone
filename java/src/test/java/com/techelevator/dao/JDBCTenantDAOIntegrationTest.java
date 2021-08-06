@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import java.time.LocalDate;
+
 public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
     private TenantDAO tenantDAO;
     private JdbcTemplate jdbcTemplate;
@@ -20,9 +22,12 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
 
     @Test
     public void should_create_tenant(){
-        String username = "test";
-        Tenant tenant = getTenant(0, 3,5, "pending");
-        tenantDAO.requestTenant(tenant,username);
+        int propertyId = 3;
+        String username = "BarbraGordon";
+
+        Tenant tenant = getTenant(0, propertyId,5, "pending",
+                "test", "test", "NJ", 1, LocalDate.now(), username, "test"  );
+        tenantDAO.requestTenant(tenant,username, propertyId);
         Assert.assertTrue(tenant.getTenantId() > 0);
         String sql = "select tenant_id from tenant where tenant_id = ?;";
         Tenant tenantFromDatabase = new Tenant();
@@ -35,13 +40,21 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
 
     }
 
-    private Tenant getTenant( double amountDue, int propertyId, int userId,
-                              String approveTenant){
+    private Tenant getTenant(double amountDue, int propertyId, int userId,
+                             String approveTenant, String firstName, String lastName, String state, int numberOfResidents,
+                             LocalDate moveInDate, String email, String occupation ){
         Tenant tenant = new Tenant();
         tenant.setAmountDue(amountDue);
         tenant.setPropertyId(propertyId);
         tenant.setUserId(userId);
         tenant.setApproveTenant(approveTenant);
+        tenant.setFirstName(firstName);
+        tenant.setLastName(lastName);
+        tenant.setState(state);
+        tenant.setNumberOfResidents(numberOfResidents);
+        tenant.setMoveInDate(moveInDate);
+        tenant.setEmail(email);
+        tenant.setOccupation(occupation);
         return tenant;
 
 
