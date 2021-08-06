@@ -8,6 +8,10 @@ export default {
     },
     addProperty(property){
         return axios.post("/manage", property)
+    },
+    addApplication(application) {
+        return axios.post("/rental/application", application)
+
     }
     
 }

@@ -4,11 +4,11 @@
     <h2 class="display-4"> Rental Application</h2>
     <h6> For inquires about the rental property, please call (888)888-8888</h6>
     <br>
-    <form class="needs-validation " novalidate>
+    <form class="needs-validation " novalidate v-on:submit.prevent="submit">
       <div class="form-row col-md-4 mb-3">
         <div>
           <label for="property">Name of desired property</label>
-          <input type="prop" class="form-control" id="property" v-model="prop" required>
+          <input type="prop" class="form-control" id="property" v-model="application.prop" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -19,14 +19,14 @@
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationCustom01">First Name</label>
-          <input type="firstName" class="form-control" id="validationCustom01" v-model="firstName" required>
+          <input type="firstName" class="form-control" id="validationCustom01" v-model="application.firstName" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationCustom02">Last name</label>
-          <input type="text" class="form-control" id="validationCustom02" v-model="lastName" required>
+          <input type="text" class="form-control" id="validationCustom02" v-model="application.lastName" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -35,20 +35,20 @@
       <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="validationCustom03">Occupation</label>
-          <input type="text" class="form-control" id="validationCustom03" v-model="occupation" required>
+          <input type="text" class="form-control" id="validationCustom03" v-model="application.occupation" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <label for="validationCustom04">State of Residency</label>
-          <input type="text" class="form-control" id="validationCustom04" v-model="state" required>
+          <input type="text" class="form-control" id="validationCustom04" v-model="application.state" required>
           <div class="invalid-feedback">
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <label for="residents">Number of Residents</label>
-          <input type="numer" class="form-control" id="residents" v-model="residents" required>
+          <input type="numer" class="form-control" id="residents" v-model="application.residents" required>
           <div class="invalid-feedback">
           </div>
         </div>
@@ -65,17 +65,17 @@
           remedies.
         </p>
       </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" v-model="date" required>
-          <label class="form-check-label" for="invalidCheck">
-            Agree to terms and conditions
-          </label>
-          <div class="invalid-feedback">
-            You must agree before submitting.
-          </div>
-        </div>
-      </div>
+<!--      <div class="form-group">-->
+<!--        <div class="form-check">-->
+<!--          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" v-model="date" required>-->
+<!--          <label class="form-check-label" for="invalidCheck">-->
+<!--            Agree to terms and conditions-->
+<!--          </label>-->
+<!--          <div class="invalid-feedback">-->
+<!--            You must agree before submitting.-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <button class="btn btn-primary" type="submit">Submit form</button>
     </form>
 
@@ -85,19 +85,41 @@
 </template>
 
 <script>
+import propertyService from "@/services/PropertyService";
+//import moment from "moment";
 export default {
+  name: "application-form",
   data() {
     return {
       value: '',
-      prop: '',
-      firstName: '',
-      lastName: '',
-      occupation: '',
-      state: '',
-      residents: '',
-      date: '',
+      application: {
+        prop: '',
+        firstName: '',
+        lastName: '',
+        occupation: '',
+        state: '',
+        residents: '',
+       // date: '',
+      }
     }
-  }
+  },
+  methods: {
+    submit(){
+      const newApplicant= {
+        firstName:this.application.firstName,
+        lastName:this.application.lastName,
+        occupation: this.application.occupation,
+        state: this.application.state,
+        resident: this.application.residents,
+      //  date: moment().format("MMM Do YYYY")
+      }
+      propertyService.addApplication(newApplicant).then(res => {
+        if(res.status === 200) {
+          this.$router.push('/')
+        }
+          })
+    }
+  },
 
 }
 
