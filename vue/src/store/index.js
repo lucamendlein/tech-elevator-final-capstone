@@ -34,6 +34,7 @@ export default new Vuex.Store({
         isStudio:'',
         isAvailable:''
     },
+    userDesiredProperty: undefined,
     filterPropertyDistrict: '',
     filterPropertyBedrooms: '',
     filterPropertyBathrooms: '',
@@ -41,6 +42,9 @@ export default new Vuex.Store({
     filterPropertyPets: ''
   },
   mutations: {
+    SET_USER_DESIRED_PROPERTY(state,desiredProperty){
+      state.userDesiredProperty=desiredProperty;
+    },
     UPDATE_DISTRICT_FILTER(state, filterPropertyDistrict) {
       state.filterPropertyDistrict = filterPropertyDistrict
     },

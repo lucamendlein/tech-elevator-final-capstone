@@ -1,6 +1,6 @@
 <template>
 
-  <div class="builidng-card card d-flex align-items-center justify-content-center m-2">
+  <div v-if="property" class="builidng-card card d-flex align-items-center justify-content-center m-2">
 
     <img class="card-img-top" :src="property.imageUrl">
     <div class="card-body">
@@ -11,7 +11,10 @@
         <div class="card-text">{{property.bedrooms}} Bedrooms</div>
       </div>
       <div >
-        <router-link v-bind:to="{path:'/rental'}" class="float-end"><b-button variant="info">Apply</b-button></router-link>
+        <router-link v-if="!nonApply" v-bind:to="{path:'/rental'}" class="float-end"><b-button variant="info"
+          @click="setDesiredProperty"
+
+        >Apply</b-button></router-link>
         <button
             class="btn btn-outline-primary"
             @click="visible = !visible"
@@ -36,13 +39,17 @@
 export default {
 
 
-  props: ['property'],
-  methods: {},
+  props: ['property','nonApply'],
+  methods: {
+    setDesiredProperty(){
+      this.$store.commit("SET_USER_DESIRED_PROPERTY",this.property);
+    }
+  },
   data() {
     return {
       visible: false
     }
-  }
+  },
 }
 
 </script>
