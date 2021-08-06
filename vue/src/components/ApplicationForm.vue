@@ -19,7 +19,7 @@
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">First Name</label>
-                <input type="firstName" class="form-control" id="validationCustom01" v-model="application.firstName"
+                <input type="firstName" class="form-control" id="validationCustom01" v-model="tenant.firstName"
                        required>
                 <div class="valid-feedback">
                   Looks good!
@@ -27,37 +27,45 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" v-model="application.lastName" required>
+                <input type="text" class="form-control" id="validationCustom02" v-model="tenant.lastName" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
               </div>
             </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Email</label>
+                <input type="email" class="form-control" id="validationCustom01" v-model="tenant.email"
+                       required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Occupation</label>
-                <input type="text" class="form-control" id="validationCustom03" v-model="application.occupation" required>
+                <input type="text" class="form-control" id="validationCustom03" v-model="tenant.occupation" required>
                 <div class="invalid-feedback">
                   Please provide a valid city.
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="validationCustom04">State of Residency</label>
-                <input type="text" class="form-control" id="validationCustom04" v-model="application.state" required>
+                <input type="text" class="form-control" id="validationCustom04" v-model="tenant.state" required>
                 <div class="invalid-feedback">
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="residents">Number of Residents</label>
-                <input type="number" class="form-control" id="residents" v-model="application.residents" required>
+                <input type="number" class="form-control" id="residents" v-model="tenant.numberOfResidents" required>
 
                 <div class="invalid-feedback">
                 </div>
               </div>
-              <div class="col-md-4 mb-3">
+              <!-- <div class="col-md-4 mb-3">
                 <label>Choose a move in date</label>
                 <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-              </div>
+              </div> -->
             </div>
           </div>
           <PropertyCard :property="this.$store.state.userDesiredProperty" :non-apply="true"></PropertyCard>
@@ -75,7 +83,7 @@
          </div>
          <div class="form-group">
            <div class="form-check">
-             <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck" v-model="date" required>
+             <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck"> 
              <label class="form-check-label" for="invalidCheck">
                Agree to terms and conditions
              </label>
@@ -97,39 +105,49 @@
 </template>
 
 <script>
-import propertyService from "@/services/PropertyService";
+import PropertyService from "@/services/PropertyService";
 import PropertyCard from "@/components/PropertyCard";
-//import moment from "moment";
+// import moment from "moment";
 export default {
   name: "application-form",
   components: {PropertyCard},
   data() {
     return {
       isSubmitted:false,
+      props: {
+        propertyId: {type: Number,
+        default: 0}
+      },
       value: '',
-      application: {
-        prop: '',
+      tenant: {
+        propertyId: '',
+        userId: '',
         firstName: '',
         lastName: '',
         occupation: '',
         state: '',
-        residents: '',
-        // date: '',
+        numberOfResidents: '',
+        // moveInDate: '',
+        email: '' 
       }
     }
   },
   methods: {
     submit() {
+      console.log(this.tenant)
       const newApplicant = {
-        firstName: this.application.firstName,
-        lastName: this.application.lastName,
-        occupation: this.application.occupation,
-        state: this.application.state,
-        resident: this.application.residents,
-        //  date: moment().format("MMM Do YYYY")
+        propertyId: Number(this.$route.params.propertyId),
+        firstName: this.tenant.firstName,
+        lastName: this.tenant.lastName,
+        occupation: this.tenant.occupation,
+        state: this.tenant.state,
+        resident: this.tenant.residents,
+        // moveInDate: moment().format("MMM Do YYYY")
       }
     this.isSubmitted=true;
-      propertyService.addApplication(newApplicant).then(res => {
+    
+      PropertyService.addApplication(newApplicant).then(res => {
+        
         if (res.status === 200) {
           this.$router.push('/')
         }

@@ -10,7 +10,7 @@ export default {
         return axios.post("/manage", property)
     },
     addApplication(tenant) {
-        return axios.post("/rental", tenant)
+        return axios.post(`/rental/${tenant.propertyID}`, tenant)
 
     }
     

@@ -11,7 +11,7 @@
         <div class="card-text">{{property.bedrooms}} Bedrooms</div>
       </div>
       <div >
-        <router-link v-if="!nonApply" v-bind:to="{path:'/rental'}" class="float-end"><b-button variant="info"
+        <router-link v-if="!nonApply" v-bind:to="{path:`/rental/${property.propertyID}`}" class="float-end"><b-button variant="info"
           @click="setDesiredProperty"
 
         >Apply</b-button></router-link>
