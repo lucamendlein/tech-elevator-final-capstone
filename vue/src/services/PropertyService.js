@@ -7,7 +7,7 @@ export default {
         return axios.get('/properties')
     },
     addProperty(property){
-        return axios.post("/manage", property)
+        return axios.post('/manage', property)
     }
     
 }
