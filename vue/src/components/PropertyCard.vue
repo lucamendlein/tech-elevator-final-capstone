@@ -11,8 +11,9 @@
         <div class="card-text">{{property.bedrooms}} Bedrooms</div>
       </div>
       <div >
+        <router-link v-bind:to="{path:'/rental'}" class="float-end"><b-button variant="info">Apply</b-button></router-link>
         <button
-            class="btn btn-outline-primary float-end"
+            class="btn btn-outline-primary"
             @click="visible = !visible"
 
         >More
@@ -33,6 +34,7 @@
 
 <script>
 export default {
+
 
   props: ['property'],
   methods: {},
