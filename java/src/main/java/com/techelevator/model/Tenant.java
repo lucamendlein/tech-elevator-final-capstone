@@ -6,13 +6,18 @@ public class Tenant {
    private String workOrder;
    private int propertyId;
    private int userId;
+   private String approveTenant;
 
-    public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId) {
+    public Tenant() {
+    }
+
+    public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId, String approveTenant) {
         this.tenantId = tenantId;
         this.amountDue = amountDue;
         this.workOrder = workOrder;
         this.propertyId = propertyId;
         this.userId = userId;
+        this.approveTenant =approveTenant;
     }
 
     public int getTenantId() {
@@ -53,5 +58,13 @@ public class Tenant {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getApproveTenant() {
+        return approveTenant;
+    }
+
+    public void setApproveTenant(String approveTenant) {
+        this.approveTenant = approveTenant;
     }
 }
