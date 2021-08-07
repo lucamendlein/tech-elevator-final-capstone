@@ -3,13 +3,12 @@
 
     <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Application submitted Successfully.
-      <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x </button>
+      <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
     </div>
     <h2 class="display-4"> Rental Application</h2>
     <h6> For inquires about the rental property, please call (888)888-8888</h6>
     <br>
     <form novalidate v-on:submit.prevent="submit">
-
 
 
       <div>
@@ -36,7 +35,8 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Occupation</label>
-                <input type="text" class="form-control" id="validationCustom03" v-model="application.occupation" required>
+                <input type="text" class="form-control" id="validationCustom03" v-model="application.occupation"
+                       required>
                 <div class="invalid-feedback">
                   Please provide a valid city.
                 </div>
@@ -64,28 +64,29 @@
         </div>
 
 
-       <div>
-         <div>
-           <p class="font-italic">
-             I declare that the information I have provided is true and correct, and contain no misrepresentation. If
-             misrepresentations are found after a residential lease agreement is entered into between the Landlord and
-             Applicant, the Landlord shall have the option to terminate the residential lease agreement and seek other
-             remedies.
-           </p>
-         </div>
-         <div class="form-group">
-           <div class="form-check">
-             <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck" v-model="date" required>
-             <label class="form-check-label" for="invalidCheck">
-               Agree to terms and conditions
-             </label>
-             <div class="invalid-feedback">
-               You must agree before submitting.
-             </div>
-           </div>
-         </div>
-         <button class="btn btn-primary"  type="submit">Submit form</button>
-       </div>
+        <div>
+          <div>
+            <p class="font-italic">
+              I declare that the information I have provided is true and correct, and contain no misrepresentation. If
+              misrepresentations are found after a residential lease agreement is entered into between the Landlord and
+              Applicant, the Landlord shall have the option to terminate the residential lease agreement and seek other
+              remedies.
+            </p>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck" v-model="date"
+                     required>
+              <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+              </label>
+              <div class="invalid-feedback">
+                You must agree before submitting.
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
 
       </div>
 
@@ -105,7 +106,7 @@ export default {
   components: {PropertyCard},
   data() {
     return {
-      isSubmitted:false,
+      isSubmitted: false,
       value: '',
       application: {
         prop: '',
@@ -126,12 +127,16 @@ export default {
         occupation: this.application.occupation,
         state: this.application.state,
         resident: this.application.residents,
+        propertyId:this.$store.state.userDesiredProperty.propertyID,
+        username: this.$store.state.user.username,
+        email: this.$store.state.user.username
         //  date: moment().format("MMM Do YYYY")
       }
-    this.isSubmitted=true;
-      propertyService.addApplication(newApplicant).then(res => {
+      propertyService.addApplication(newApplicant)
+          .then(res => {
         if (res.status === 200) {
-          this.$router.push('/')
+          this.isSubmitted = true;
+
         }
       })
     }
@@ -143,10 +148,11 @@ export default {
 
 
 <style>
-.form-left-side{
+.form-left-side {
   width: 50%;
 }
-.hide{
+
+.hide {
   display: none !important;
 }
 

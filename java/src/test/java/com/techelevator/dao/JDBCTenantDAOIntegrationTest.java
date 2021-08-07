@@ -23,11 +23,11 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
     @Test
     public void should_create_tenant(){
         int propertyId = 3;
-        String username = "BarbraGordon";
+        String username = "user";
 
         Tenant tenant = getTenant(0, propertyId,5, "pending",
                 "test", "test", "NJ", 1, LocalDate.now(), username, "test"  );
-        tenantDAO.requestTenant(tenant,username, propertyId);
+        tenantDAO.requestTenant(tenant, propertyId);
         Assert.assertTrue(tenant.getTenantId() > 0);
         String sql = "select tenant_id from tenant where tenant_id = ?;";
         Tenant tenantFromDatabase = new Tenant();
@@ -44,6 +44,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
                              String approveTenant, String firstName, String lastName, String state, int numberOfResidents,
                              LocalDate moveInDate, String email, String occupation ){
         Tenant tenant = new Tenant();
+        tenant.setUsername(email); //setting username as email
         tenant.setAmountDue(amountDue);
         tenant.setPropertyId(propertyId);
         tenant.setUserId(userId);

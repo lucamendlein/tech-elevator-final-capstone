@@ -3,25 +3,27 @@ package com.techelevator.model;
 import java.time.LocalDate;
 
 public class Tenant {
-   private int  tenantId;
-   private double amountDue;
-   private String workOrder;
-   private int propertyId;
-   private int userId;
-   private String approveTenant;
-   private String firstName;
-   private String lastName;
-   private String state;
-   private int numberOfResidents;
-   private LocalDate moveInDate;
-   private String email;
-   private String occupation;
+    private int tenantId;
+    private double amountDue;
+    private String workOrder;
+    private int propertyId;
+    private int userId;
+    private String approveTenant;
+    private String firstName;
+    private String lastName;
+    private String state;
+    private int numberOfResidents;
+    private LocalDate moveInDate;
+    private String email;
+    private String occupation;
+    private String username;
 
     public Tenant() {
     }
 
     public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId, String approveTenant,
-                  String firstName, String lastName, String state, int numberOfResidents, LocalDate moveInDate, String email, String occupation) {
+                  String firstName, String lastName, String state,
+                  int numberOfResidents, LocalDate moveInDate, String email, String occupation,String username) {
         this.tenantId = tenantId;
         this.amountDue = amountDue;
         this.workOrder = workOrder;
@@ -34,6 +36,15 @@ public class Tenant {
         this.numberOfResidents = numberOfResidents;
         this.moveInDate = moveInDate;
         this.email = email;
+        this.username = username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public int getTenantId() {

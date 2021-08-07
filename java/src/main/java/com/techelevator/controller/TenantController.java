@@ -16,10 +16,11 @@ public class TenantController {
         this.tenantDAO = tenantDAO;
     }
 
+    //using the tenant object to marshall the add
     @RequestMapping(path = "/rental/{id}", method = RequestMethod.POST)
     public Tenant createTenant(@RequestBody Tenant tenant, @PathVariable(name = "id") int propertyId, Principal principal){
 
-        tenantDAO.requestTenant(tenant, principal.getName(), propertyId);
+        tenantDAO.requestTenant(tenant, propertyId);
         return tenant;
     }
 

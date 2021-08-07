@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container p-lg-5" >
     <div v-show="!showForm" class="form-group">
       <a href="#" v-on:click.prevent="showForm = true">Add Property</a>
     </div>

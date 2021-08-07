@@ -91,7 +91,8 @@ const router = new Router({
       name: "Rental",
       component: Rental,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        requiresRegis:true
       }
     }
   ]
@@ -100,10 +101,13 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
  // Determine if the route requires Authentication
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const requiresRegis= to.matched.some(x => x.meta.requiresRegis);
 
   //If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
     next("/login");
+  }else if(requiresRegis && store.state.token === ''){
+    next("/register")
   } else {
     // Else let them go to their next destination
     next();

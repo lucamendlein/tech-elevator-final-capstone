@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="background">
-    <div id="nav">
+    <div id="nav" class="page-nav-bar">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <router-link class="navbar-brand mx-2" v-bind:to="{ name: 'splash-page'} " href="#">GOTHAM CITY REAL ESTATE</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
           <div class="collapse navbar-collapse justify-content-end p-2" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item ">
-                <router-link v-bind:to="{name: 'home'}" class="nav-link" >Home</router-link>
+                <router-link v-bind:to="{name: 'splash-page'}" class="nav-link" >Home</router-link>
               </li>
               <li class="nav-item">
                 <router-link v-bind:to="{name: 'login'}" v-if="!$store.state.token" class="nav-link">Login</router-link>
@@ -43,6 +43,11 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+.page-nav-bar{
+  position: sticky;
+  top:0;
+  z-index: 999;
 }
 
 .main{

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TenantDAO {
 
-    void requestTenant(Tenant tenant, String username, int propertyId);
+    void requestTenant(Tenant tenant, int propertyId);
 
     List<Tenant> listPendingTenants();
 
