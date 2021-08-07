@@ -58,12 +58,6 @@ import PropertyService from "@/services/PropertyService";
 
 export default {
   name: "add-property",
-  //  props: {
-  //   propertyID: {
-  //     type: Number,
-  //     default: 0
-  //   }
-  // },
   data(){
     return {
       showForm: false,

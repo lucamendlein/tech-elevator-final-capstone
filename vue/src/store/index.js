@@ -34,6 +34,18 @@ export default new Vuex.Store({
         isStudio:'',
         isAvailable:''
     },
+    // tenant: {
+    //   propertyId: '',
+    //     userId: '',
+    //     firstName: '',
+    //     lastName: '',
+    //     occupation: '',
+    //     state: '',
+    //     numberOfResidents: '',
+    //     moveInDate: '',
+    //     email: '' 
+
+    // },
     userDesiredProperty: undefined,
     filterPropertyDistrict: '',
     filterPropertyBedrooms: '',
