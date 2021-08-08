@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
     private TenantDAO tenantDAO;
@@ -39,6 +40,19 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
 
 
     }
+
+    @Test
+    public void should_give_list_of_pending_tenants(){
+        List<Tenant> tenantList = tenantDAO.listPendingTenants();
+
+        String sql = "Insert Into tenant (tenant_id, amount_due, property_id, user_id , approve_tenant, first_name, last_name, state, number_of_residents, move_in_date, email, occupation)\n" +
+                "        values (default, 0,  3, 5, 'Pending', 'test', 'test', 'oh', 1, '2021-12-13', 'test', 'test' )";
+        jdbcTemplate.update(sql);
+        List<Tenant> newList = tenantDAO.listPendingTenants();
+        Assert.assertEquals(tenantList.size() + 1, newList.size());
+
+    }
+
 
     private Tenant getTenant(double amountDue, int propertyId, int userId,
                              String approveTenant, String firstName, String lastName, String state, int numberOfResidents,

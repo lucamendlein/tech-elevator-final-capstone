@@ -44,13 +44,13 @@ public class JDBCTenantDAO implements TenantDAO{
 
     @Override
     public Tenant approveTenant(Tenant tenant, String username) {
-        
+
         return null;
     }
 
     private Tenant mapRowToTenant(SqlRowSet row){
         Tenant tenant = new Tenant();
-        tenant.setUsername(row.getString("username")); //setting username as email
+        tenant.setUsername(row.getString("email")); //setting username as email
         tenant.setAmountDue(row.getDouble("amount_due"));
         tenant.setPropertyId(row.getInt("property_id"));
         tenant.setUserId(row.getInt("user_id"));
@@ -62,7 +62,7 @@ public class JDBCTenantDAO implements TenantDAO{
         if (row.getDate("move_in_date") != null) {
             tenant.setMoveInDate(row.getDate("move_in_date").toLocalDate());
         }
-        tenant.setEmail(row.getString("email,"));
+        tenant.setEmail(row.getString("email"));
         tenant.setOccupation(row.getString("occupation"));
         return tenant;
 
