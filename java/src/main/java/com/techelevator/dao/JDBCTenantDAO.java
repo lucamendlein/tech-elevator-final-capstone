@@ -6,6 +6,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JDBCTenantDAO implements TenantDAO{
@@ -28,11 +30,41 @@ public class JDBCTenantDAO implements TenantDAO{
 
     @Override
     public List<Tenant> listPendingTenants() {
-        return null;
+        String sql = "select tenant_id, amount_due, property_id, user_id , approve_tenant, first_name, last_name, state, number_of_residents, move_in_date, email, occupation " +
+                "from tenant  " +
+                "where approve_tenant = 'Pending'";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+        List<Tenant> pendingTenants = new ArrayList<Tenant>();
+        while(rows.next()){
+            Tenant tenant = mapRowToTenant(rows);
+            pendingTenants.add(tenant);
+        }
+        return pendingTenants;
     }
 
     @Override
     public Tenant approveTenant(Tenant tenant, String username) {
+        
         return null;
+    }
+
+    private Tenant mapRowToTenant(SqlRowSet row){
+        Tenant tenant = new Tenant();
+        tenant.setUsername(row.getString("username")); //setting username as email
+        tenant.setAmountDue(row.getDouble("amount_due"));
+        tenant.setPropertyId(row.getInt("property_id"));
+        tenant.setUserId(row.getInt("user_id"));
+        tenant.setApproveTenant(row.getString("approve_tenant"));
+        tenant.setFirstName(row.getString("first_name"));
+        tenant.setLastName(row.getString("last_name"));
+        tenant.setState(row.getString("state"));
+        tenant.setNumberOfResidents(row.getInt("number_of_residents"));
+        if (row.getDate("move_in_date") != null) {
+            tenant.setMoveInDate(row.getDate("move_in_date").toLocalDate());
+        }
+        tenant.setEmail(row.getString("email,"));
+        tenant.setOccupation(row.getString("occupation"));
+        return tenant;
+
     }
 }
