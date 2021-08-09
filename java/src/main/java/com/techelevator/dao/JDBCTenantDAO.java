@@ -43,9 +43,11 @@ public class JDBCTenantDAO implements TenantDAO{
     }
 
     @Override
-    public Tenant approveTenant(Tenant tenant, String username) {
+    public void approveTenant(Tenant tenant,  String approve) {
+        String sql = "update tenant set approve_tenant = ? where tenant_id = ? ";
+        jdbcTemplate.update("update tenant set approve_tenant = ? where tenant_id = ? ", approve , tenant.getTenantId());
 
-        return null;
+
     }
 
     private Tenant mapRowToTenant(SqlRowSet row){

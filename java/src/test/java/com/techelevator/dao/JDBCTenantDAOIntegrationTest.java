@@ -53,10 +53,24 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
 
     }
 
+    @Test
+    public void should_update_approve_tenant(){
+        Tenant tenant = getTenant(0, 3,1, "Pending",
+                "test", "test", "NJ", 1, LocalDate.now(), "test", "test"  );
+        String approve = "Approve";
+        tenant.setTenantId(12);
+        tenantDAO.approveTenant(tenant, approve);
+
+
+        Assert.assertEquals("Approve", tenant.getApproveTenant());
+
+
+    }
+
 
     private Tenant getTenant(double amountDue, int propertyId, int userId,
                              String approveTenant, String firstName, String lastName, String state, int numberOfResidents,
-                             LocalDate moveInDate, String email, String occupation ){
+                             LocalDate moveInDate, String email, String occupation){
         Tenant tenant = new Tenant();
         tenant.setUsername(email); //setting username as email
         tenant.setAmountDue(amountDue);
