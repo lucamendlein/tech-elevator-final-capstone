@@ -56,7 +56,7 @@ public class JDBCTenantDAO implements TenantDAO{
         tenant.setAmountDue(row.getDouble("amount_due"));
         tenant.setPropertyId(row.getInt("property_id"));
         tenant.setUserId(row.getInt("user_id"));
-        tenant.setApprove_tenant(row.getString("approve_tenant"));
+        tenant.setApprovalStatus(row.getString("approve_tenant"));
         tenant.setFirstName(row.getString("first_name"));
         tenant.setLastName(row.getString("last_name"));
         tenant.setState(row.getString("state"));

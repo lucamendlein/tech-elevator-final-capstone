@@ -39,15 +39,15 @@ public class JDBCPropertyDAOIntegrationTest extends DAOIntegrationTest{
 
         propertyDAO.createProperty(property,username );
 
-        Assert.assertTrue(property.getPropertyID() > 0);
+        Assert.assertTrue(property.getPropertyId() > 0);
 
         String sql = "SELECT property_id, address_line_1, address_line_2, district, square_footage, bedrooms, bathrooms, price, pets, image_url, studio, available " +
                 "FROM property " +
                 "where property_id = ?";
         Property propertyFromDatabase = new Property();
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, property.getPropertyID());
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, property.getPropertyId());
         if (rows.next()) {
-            propertyFromDatabase.setPropertyID(rows.getInt("property_id"));
+            propertyFromDatabase.setPropertyId(rows.getInt("property_id"));
             propertyFromDatabase.setAddressLine1(rows.getString("address_line_1"));
             propertyFromDatabase.setAddressLine2(rows.getString("address_line_2"));
             propertyFromDatabase.setBedrooms(rows.getInt("bedrooms"));
@@ -60,7 +60,7 @@ public class JDBCPropertyDAOIntegrationTest extends DAOIntegrationTest{
             propertyFromDatabase.setIsStudio(rows.getBoolean("studio"));
             propertyFromDatabase.setIsAvailable(rows.getBoolean("available"));
         }
-        Assert.assertEquals(propertyFromDatabase.getPropertyID(), property.getPropertyID());
+        Assert.assertEquals(propertyFromDatabase.getPropertyId(), property.getPropertyId());
 
     }
 

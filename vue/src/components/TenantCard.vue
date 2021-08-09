@@ -12,7 +12,7 @@
 
         >Go To Tenant</b-button></router-link> -->
 
-            <p class="m-0"><b>Status: &ensp;</b> {{tenant.approveTenant}}</p>
+            <p class="m-0"><b>Status: &ensp;</b> {{tenant.approvalStatus}}</p>
           <p class="m-0"><b>Service Requests? &ensp;</b> <small v-if="tenant.workOrder">Yes </small>
           <small v-else>No</small></p>
           <p class="m-0"><b>Amount Due: &ensp;</b> ${{tenant.amountDue}} </p>
@@ -47,17 +47,17 @@ data() {
       numberOfResidents: '',
       moveInDate: '',
       email: '',
-      approveTenant: ''
+      approvalStatus: ''
     }
 },
   methods: {
     setSelectedTenant() {
       this.$store.commit("SET_SELECTED_TENANT", this.tenant);
     },
-    updateTenantStatus(approvalStatus) {
+    // updateTenantStatus(approvalStatus) {
 
-      this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant, approvalStatus)
-    },
+    //   this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant, approvalStatus)
+    // },
 
     Approved() {
       const changedTenant = {
@@ -71,7 +71,7 @@ data() {
         numberOfResidents: this.tenant.numberOfResidents,
         moveInDate: this.tenant.moveInDate,
         email: this.tenant.email,
-        approveTenant: this.tenant.approveTenant
+        approvalStatus: this.tenant.approvalStatus
 
       }
       PropertyService.updateTenants(changedTenant).then(res => {

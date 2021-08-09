@@ -78,7 +78,7 @@ const router = new Router({
       }
     },
     {
-      path: "/manage",
+      path: "/tenants",
       name: "manage",
       component: Manage,
       meta: {
@@ -87,7 +87,7 @@ const router = new Router({
     },
 
     {
-      path: "/rental/:propertyId",
+      path: "/properties/:propertyId",
       name: "Rental",
       component: Rental,
       meta: {

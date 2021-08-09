@@ -7,17 +7,17 @@ export default {
         return axios.get('/properties')
     },
     addProperty(property){
-        return axios.post('/manage', property)
+        return axios.post('/properties', property)
     },
     addApplication(tenant) {
-        return axios.post(`/rental/${tenant.propertyId}`, tenant)
+        return axios.post(`/properties/${tenant.propertyId}`, tenant)
 
     },
     getTenants(){
-        return axios.get('/manage')
+        return axios.get('/tenants')
     },
     updateTenants(tenant){
-        return axios.put(`/manage/${tenant.tenantId}`, tenant)
+        return axios.put(`/tenants/${tenant.tenantId}`, tenant)
     }
 
 }

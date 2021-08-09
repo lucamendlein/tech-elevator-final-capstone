@@ -69,20 +69,6 @@ export default {
   },
   methods: {
     submitForm() {
-      // const newProperty = {
-      //   addressLine1: this.property.addressLine1,
-      //   addressLine2: this.property.addressLine2,
-      //   district: this.property.district,
-      //   squareFootage: this.property.squareFootage,
-      //   bedrooms:this.property.bedrooms,
-      //   bathrooms: this.property.bathrooms,
-      //   price: this.property.price,
-      //   allowsPets: this.property.allowsPets,
-      //   imageUrl: this.property.imageUrl,
-      //   isStudio:this.property.isStudio,
-      //   isAvailable:this.property.isAvailable
-      // };
-        
         PropertyService.addProperty(this.property)
           .then(response => {
             
@@ -94,36 +80,8 @@ export default {
           .catch(error => {
             this.handleErrorResponse(error, "adding");
           });
-    //   } else {
-        
-    //     newProperty.id = this.propertyId;
-    //     newProperty.addressLine1 = this.property.addressLine1;
-    //     newProperty.addressLine2 = this.property.addresLine2;
-    //     newProperty.district = this.property.date;
-    //     newProperty.squareFootage = this.property.squareFootage;
-    //     newProperty.bedrooms = this.property.bedrooms;
-    //     newProperty.bathrooms = this.property.bathrooms;
-    //     newProperty.price = this.property.price;
-    //     newProperty.allowsPets = this.property.allowsPets;
-    //     newProperty.imageUrl = this.property.imageUrl;
-    //     newProperty.isStudio = this.property.isStudio;
-    //     newProperty.isAvailable = this.property.isAvailable;
-
-    //     PropertyService
-    //       .updateProperty(newProperty)
-    //       .then(response => {
-    //         if (response.status === 200) {
-    //           this.$router.push(`/properties/${newProperty.propertyId}`);
-    //         }
-    //       })
-    //       .catch(error => {
-    //         this.handleErrorResponse(error, "updating");
-    //       });
-       
      },
-    //  cancelForm() {
-    //   this.$router.push(`/properties/${this.$route.params.propertyID}`);
-    // },
+
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =

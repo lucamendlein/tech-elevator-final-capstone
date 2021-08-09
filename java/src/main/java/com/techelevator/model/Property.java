@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
 public class Property {
-   private int propertyID;
+   private int propertyId;
     private String addressLine1;
     private String addressLine2;
     private String  district;
@@ -17,9 +17,9 @@ public class Property {
     public Property() {
     }
 
-    public Property(int propertyID, String addressLine1, String addressLine2, String district,
+    public Property(int propertyId, String addressLine1, String addressLine2, String district,
                     int squareFootage, int bedrooms, double bathrooms, double price, boolean allowsPets, String imageUrl, boolean isStudio, boolean isAvailable) {
-        this.propertyID = propertyID;
+        this.propertyId = propertyId;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.district = district;
@@ -33,12 +33,12 @@ public class Property {
         this.isAvailable = isAvailable;
     }
 
-    public int getPropertyID() {
-        return propertyID;
+    public int getPropertyId() {
+        return propertyId;
     }
 
-    public void setPropertyID(int propertyID) {
-        this.propertyID = propertyID;
+    public void setPropertyId(int propertyId) {
+        this.propertyId = propertyId;
     }
 
     public String getAddressLine1() {

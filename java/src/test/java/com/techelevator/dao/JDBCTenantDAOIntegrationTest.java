@@ -61,7 +61,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
         tenantDAO.approveTenant(tenant, approve);
 
 
-        Assert.assertEquals("Approve", tenant.getApprove_tenant());
+        Assert.assertEquals("Approve", tenant.getApprovalStatus());
 
 
     }
@@ -75,7 +75,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
         tenant.setAmountDue(amountDue);
         tenant.setPropertyId(propertyId);
         tenant.setUserId(userId);
-        tenant.setApprove_tenant(approveTenant);
+        tenant.setApprovalStatus(approveTenant);
         tenant.setFirstName(firstName);
         tenant.setLastName(lastName);
         tenant.setState(state);

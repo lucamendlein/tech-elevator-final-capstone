@@ -4,7 +4,6 @@ import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -42,14 +41,14 @@ public class JDBCPropertyDAO implements PropertyDAO{
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, property.getAddressLine1(), property.getAddressLine2(), property.getDistrict(), property.getSquareFootage(),
                  property.getBedrooms(), property.getBathrooms(), property.getPrice(), property.isAllowsPets(), property.isStudio(), property.isAvailable());
         rows.next();
-        property.setPropertyID(rows.getInt("property_id"));
+        property.setPropertyId(rows.getInt("property_id"));
 
     }
 
 
     private Property mapRowToProperty(SqlRowSet row){
         Property property = new Property();
-        property.setPropertyID(row.getInt("property_id"));
+        property.setPropertyId(row.getInt("property_id"));
         property.setAddressLine1(row.getString("address_line_1"));
         property.setAddressLine2(row.getString("address_line_2"));
         property.setBedrooms(row.getInt("bedrooms"));
