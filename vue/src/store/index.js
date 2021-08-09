@@ -45,7 +45,9 @@ export default new Vuex.Store({
         state: '',
         numberOfResidents: '',
         moveInDate: '',
-        email: '' 
+        email: '',
+      approveTenant: ''
+
 
     },
     selectedTenant: undefined,
@@ -63,6 +65,11 @@ export default new Vuex.Store({
     SET_SELECTED_TENANT(state, selectedTenant){
       state.selectedTenant=selectedTenant;
     },
+    APPROVE_TENANT_STATUS(state, tenant, approveTenant) {
+
+      state.approveTenant = approveTenant;
+    },
+
     
     UPDATE_DISTRICT_FILTER(state, filterPropertyDistrict) {
       state.filterPropertyDistrict = filterPropertyDistrict

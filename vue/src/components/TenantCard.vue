@@ -11,20 +11,16 @@
           @click="setSelectedTenant"
 
         >Go To Tenant</b-button></router-link> -->
-        <button
-            class="btn btn-outline-primary"
-            @click="visible = !visible"
 
-        >More
-        </button>
-        <b-collapse class="collapse-con" :visible="visible">
-          <p class="m-0"><b>Status: &ensp;</b> {{tenant.approveTenant}}</p>
+            <p class="m-0"><b>Status: &ensp;</b> {{tenant.approveTenant}}</p>
           <p class="m-0"><b>Service Requests? &ensp;</b> <small v-if="tenant.workOrder">Yes </small>
           <small v-else>No</small></p>
           <p class="m-0"><b>Amount Due: &ensp;</b> ${{tenant.amountDue}} </p>
+            <button class="btn btn-outline-primary" @click="updateTenantStatus('Approve')"> Approve</button>
+            <button class="btn btn-outline-primary float-end">Deny</button>
           
           
-        </b-collapse>
+
       </div>
       </div>
       </div>
@@ -32,19 +28,51 @@
 </template>
 
 <script>
+import PropertyService from "@/services/PropertyService";
 export default {
 
 props: ['tenant', 'nonSelect'],
-methods: {
-    setSelectedTenant(){
-        this.$store.commit("SET_SELECTED_TENANT", this.tenant);
-    }
-},
+
 data() {
     return {
-        visible: false
+      visible: false,
+      approved: '',
+      denied: ''
     }
-}
+},
+  methods: {
+    setSelectedTenant(){
+      this.$store.commit("SET_SELECTED_TENANT", this.tenant);
+    },
+    updateTenantStatus(approvalStatus){
+
+      this.$store.commit('UPDATE_TENANT_STATUS', this.tenant.approveTenant,  approvalStatus)
+    },
+
+    Approved() {
+      const approvedTenant= {
+        tenantId: this.tenant.tenantId,
+        propertyId: this.tenant.propertyId,
+        userId: this.tenant.userId,
+        firstName: this.tenant.firstName,
+        lastName: this.tenant.lastName,
+        occupation: this.tenant.occupation,
+        state: this.tenant.state,
+        numberOfResidents: this.tenant.numberOfResidents,
+        moveInDate: this.tenant.moveInDate,
+        email: this.tenant.email,
+        approveTenant: this.tenant.approveTenant
+
+      }
+      PropertyService.updateTenants(approvedTenant).then(res => {
+        if(res.status === 200 || res.status === 201 ) {
+
+        }
+      })
+
+
+    }
+  },
 
 }
 </script>
