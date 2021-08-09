@@ -56,7 +56,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label>Choose a move in date</label>
-                <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
+                <b-form-datepicker id="example-datepicker" v-model="application.moveInDate" class="mb-2"></b-form-datepicker>
               </div>
             </div>
           </div>
@@ -89,6 +89,7 @@
         </div>
 
       </div>
+      <Map class="float-end"/>
 
     </form>
 
@@ -100,10 +101,11 @@
 <script>
 import propertyService from "@/services/PropertyService";
 import PropertyCard from "@/components/PropertyCard";
+import Map from "@/components/Map";
 //import moment from "moment";
 export default {
   name: "application-form",
-  components: {PropertyCard},
+  components: {Map, PropertyCard},
   data() {
     return {
       isSubmitted: false,
@@ -115,7 +117,7 @@ export default {
         occupation: '',
         state: '',
         residents: '',
-        // date: '',
+        moveInDate: '',
       }
     }
   },
@@ -129,8 +131,9 @@ export default {
         resident: this.application.residents,
         propertyId:this.$store.state.userDesiredProperty.propertyID,
         username: this.$store.state.user.username,
-        email: this.$store.state.user.username
-        //  date: moment().format("MMM Do YYYY")
+        email: this.$store.state.user.username,
+        moveInDate: this.$store.state.user.date
+             //moment().format("MMM Do YYYY")
       }
       propertyService.addApplication(newApplicant)
           .then(res => {

@@ -10,12 +10,14 @@ import FullpageModal from 'vue-fullpage-modal'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-
-
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false;
-
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyB9oWGi6vYuEhv21B6rsjt-6MlTCSpJ9_c'
+  }
+})
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(FullpageModal)

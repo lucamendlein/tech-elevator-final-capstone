@@ -4,7 +4,8 @@
 
     <p>You must be authenticated to see this</p>
     <div>
-      <splash-page-comp v-if="!$store.state.token"/>
+
+      <Map/>
   </div>
 
   </div>
@@ -15,10 +16,10 @@
 <script>
 
 
-import SplashPageComp from "@/components/SplashPageComp";
+import Map from "@/components/Map";
 export default {
   name: "home",
-  components: {SplashPageComp}
+  components: {Map}
 
 };
 </script>
