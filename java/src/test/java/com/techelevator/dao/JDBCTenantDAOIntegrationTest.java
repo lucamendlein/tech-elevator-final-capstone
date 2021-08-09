@@ -56,9 +56,9 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
     public void should_update_approve_tenant(){
         Tenant tenant = getTenant(0, 3,1, "Pending",
                 "test", "test", "NJ", 1, LocalDate.now(), "test", "test"  );
-        String approve = "Approve";
+
         tenant.setTenantId(12);
-        tenantDAO.approveTenant(tenant, approve);
+        tenantDAO.approveTenant(tenant);
 
 
         Assert.assertEquals("Approve", tenant.getApprovalStatus());
