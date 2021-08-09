@@ -5,6 +5,7 @@ import com.techelevator.model.Tenant;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -22,6 +23,12 @@ public class TenantController {
 
         tenantDAO.requestTenant(tenant, propertyId);
         return tenant;
+    }
+
+    @RequestMapping(path = "/manage", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Tenant> getPendingTenants() {
+        return tenantDAO.listPendingTenants();
     }
 
 }

@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     properties: [],
+    tenants: [],
     property: {
       addressLine1: '',
         addressLine2: '',
@@ -34,18 +35,20 @@ export default new Vuex.Store({
         isStudio:'',
         isAvailable:''
     },
-    // tenant: {
-    //   propertyId: '',
-    //     userId: '',
-    //     firstName: '',
-    //     lastName: '',
-    //     occupation: '',
-    //     state: '',
-    //     numberOfResidents: '',
-    //     moveInDate: '',
-    //     email: '' 
+    tenant: {
+      tenantId: '',
+      propertyId: '',
+        userId: '',
+        firstName: '',
+        lastName: '',
+        occupation: '',
+        state: '',
+        numberOfResidents: '',
+        moveInDate: '',
+        email: '' 
 
-    // },
+    },
+    selectedTenant: undefined,
     userDesiredProperty: undefined,
     filterPropertyDistrict: '',
     filterPropertyBedrooms: '',
@@ -57,6 +60,10 @@ export default new Vuex.Store({
     SET_USER_DESIRED_PROPERTY(state,desiredProperty){
       state.userDesiredProperty=desiredProperty;
     },
+    SET_SELECTED_TENANT(state, selectedTenant){
+      state.selectedTenant=selectedTenant;
+    },
+    
     UPDATE_DISTRICT_FILTER(state, filterPropertyDistrict) {
       state.filterPropertyDistrict = filterPropertyDistrict
     },
@@ -75,6 +82,9 @@ export default new Vuex.Store({
     },
     GET_PROPERTY_LIST(state, properties){
       state.properties = properties;
+    },
+    GET_TENANT_LIST(state, tenants) {
+      state.tenants = tenants;
     }
     ,
     SET_AUTH_TOKEN(state, token) {
