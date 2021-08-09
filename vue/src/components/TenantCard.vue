@@ -16,7 +16,7 @@
           <p class="m-0"><b>Service Requests? &ensp;</b> <small v-if="tenant.workOrder">Yes </small>
           <small v-else>No</small></p>
           <p class="m-0"><b>Amount Due: &ensp;</b> ${{tenant.amountDue}} </p>
-            <button class="btn btn-outline-primary" @click="updateTenantStatus('Approve')"> Approve</button>
+            <button class="btn btn-outline-primary" v-on:click="updateTenantStatus('Approve')"> Approve</button>
             <button class="btn btn-outline-primary float-end">Deny</button>
           
           
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-//import PropertyService from "@/services/PropertyService";
+import PropertyService from "@/services/PropertyService";
 export default {
 
 props: ['tenant', 'nonSelect'],
@@ -46,34 +46,35 @@ data() {
     },
     updateTenantStatus(approvalStatus){
 
-      this.$store.commit('UPDATE_TENANT_STATUS', this.tenant.approveTenant,  approvalStatus)
+      this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant,  approvalStatus)
     },
 
-    // Approved() {
-    //   const approvedTenant= {
-    //     tenantId: this.tenant.tenantId,
-    //     propertyId: this.tenant.propertyId,
-    //     userId: this.tenant.userId,
-    //     firstName: this.tenant.firstName,
-    //     lastName: this.tenant.lastName,
-    //     occupation: this.tenant.occupation,
-    //     state: this.tenant.state,
-    //     numberOfResidents: this.tenant.numberOfResidents,
-    //     moveInDate: this.tenant.moveInDate,
-    //     email: this.tenant.email,
-    //     approveTenant: this.tenant.approveTenant
-    //
-    //   }
-      // PropertyService.updateTenants(approvedTenant).then(res => {
-      //   if(res.status === 200 || res.status === 201 ) {
-      //
-      //   }
-      // })
+    Approved() {
+      const approvedTenant= {
+        tenantId: this.tenant.tenantId,
+        propertyId: this.tenant.propertyId,
+        userId: this.tenant.userId,
+        firstName: this.tenant.firstName,
+        lastName: this.tenant.lastName,
+        occupation: this.tenant.occupation,
+        state: this.tenant.state,
+        numberOfResidents: this.tenant.numberOfResidents,
+        moveInDate: this.tenant.moveInDate,
+        email: this.tenant.email,
+        approveTenant: this.tenant.approveTenant
+    
+      }
+      PropertyService.updateTenants(approvedTenant).then(res => {
+        if(res.status === 200 || res.status === 201 ) {
+            this.approveTenant = 'Approve';
+        }
+      })
 
 
     }
 
 
+}
 }
 </script>
 

@@ -66,7 +66,6 @@ export default new Vuex.Store({
       state.selectedTenant=selectedTenant;
     },
     APPROVE_TENANT_STATUS(state, tenant, approveTenant) {
-
       state.approveTenant = approveTenant;
     },
 
