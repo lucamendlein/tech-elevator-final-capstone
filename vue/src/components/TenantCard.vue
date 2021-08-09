@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import PropertyService from "@/services/PropertyService";
+//import PropertyService from "@/services/PropertyService";
 export default {
 
 props: ['tenant', 'nonSelect'],
@@ -49,30 +49,30 @@ data() {
       this.$store.commit('UPDATE_TENANT_STATUS', this.tenant.approveTenant,  approvalStatus)
     },
 
-    Approved() {
-      const approvedTenant= {
-        tenantId: this.tenant.tenantId,
-        propertyId: this.tenant.propertyId,
-        userId: this.tenant.userId,
-        firstName: this.tenant.firstName,
-        lastName: this.tenant.lastName,
-        occupation: this.tenant.occupation,
-        state: this.tenant.state,
-        numberOfResidents: this.tenant.numberOfResidents,
-        moveInDate: this.tenant.moveInDate,
-        email: this.tenant.email,
-        approveTenant: this.tenant.approveTenant
-
-      }
-      PropertyService.updateTenants(approvedTenant).then(res => {
-        if(res.status === 200 || res.status === 201 ) {
-
-        }
-      })
+    // Approved() {
+    //   const approvedTenant= {
+    //     tenantId: this.tenant.tenantId,
+    //     propertyId: this.tenant.propertyId,
+    //     userId: this.tenant.userId,
+    //     firstName: this.tenant.firstName,
+    //     lastName: this.tenant.lastName,
+    //     occupation: this.tenant.occupation,
+    //     state: this.tenant.state,
+    //     numberOfResidents: this.tenant.numberOfResidents,
+    //     moveInDate: this.tenant.moveInDate,
+    //     email: this.tenant.email,
+    //     approveTenant: this.tenant.approveTenant
+    //
+    //   }
+      // PropertyService.updateTenants(approvedTenant).then(res => {
+      //   if(res.status === 200 || res.status === 201 ) {
+      //
+      //   }
+      // })
 
 
     }
-  },
+
 
 }
 </script>
