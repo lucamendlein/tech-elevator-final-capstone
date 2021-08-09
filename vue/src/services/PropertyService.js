@@ -15,6 +15,7 @@ export default {
     },
     getTenants(){
         return axios.get('/manage')
-    }
+    },
+    
     
 }

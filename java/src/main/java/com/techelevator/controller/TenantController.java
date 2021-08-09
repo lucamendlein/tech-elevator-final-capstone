@@ -32,8 +32,8 @@ public class TenantController {
     }
 
     @RequestMapping(path = "/manage/{id}/status", method = RequestMethod.PUT)
-    public void updateTenant(@PathVariable(name="id") int tenantId, String approvalStatus) {
-        tenantDAO.approveTenant(tenantId, approvalStatus);
+    public void updateTenant(@RequestBody Tenant tenant, @PathVariable(name="id") int tenantId, String approvalStatus) {
+        tenantDAO.approveTenant(tenant, approvalStatus);
     }
 
 }
