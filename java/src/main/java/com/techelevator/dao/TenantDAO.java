@@ -10,5 +10,5 @@ public interface TenantDAO {
 
     List<Tenant> listPendingTenants();
 
-    Tenant approveTenant(Tenant tenant, String username);
+    void approveTenant(Tenant tenant, String approve);
 }
