@@ -1,6 +1,7 @@
 <template>
   <div>
     <AddProperty/>
+    <TenantList />
 
  </div>
  
@@ -8,8 +9,10 @@
 
 <script>
 import AddProperty from "@/components/AddProperty";
+import TenantList from "@/components/TenantList";
+
 export default {
-components: {AddProperty}
+components: {AddProperty, TenantList},
 }
 </script>
 

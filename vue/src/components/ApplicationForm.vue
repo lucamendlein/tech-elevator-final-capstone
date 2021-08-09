@@ -18,7 +18,7 @@
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">First Name</label>
-                <input type="firstName" class="form-control" id="validationCustom01" v-model="application.firstName"
+                <input type="firstName" class="form-control" id="validationCustom01" v-model="tenant.firstName"
                        required>
                 <div class="valid-feedback">
                   Looks good!
@@ -26,7 +26,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" v-model="application.lastName" required>
+                <input type="text" class="form-control" id="validationCustom02" v-model="tenant.lastName" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -35,7 +35,7 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Occupation</label>
-                <input type="text" class="form-control" id="validationCustom03" v-model="application.occupation"
+                <input type="text" class="form-control" id="validationCustom03" v-model="tenant.occupation"
                        required>
                 <div class="invalid-feedback">
                   Please provide a valid city.
@@ -43,13 +43,13 @@
               </div>
               <div class="col-md-3 mb-3">
                 <label for="validationCustom04">State of Residency</label>
-                <input type="text" class="form-control" id="validationCustom04" v-model="application.state" required>
+                <input type="text" class="form-control" id="validationCustom04" v-model="tenant.state" required>
                 <div class="invalid-feedback">
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="residents">Number of Residents</label>
-                <input type="number" class="form-control" id="residents" v-model="application.residents" required>
+                <input type="number" class="form-control" id="residents" v-model="tenant.numberOfResidents" required>
 
                 <div class="invalid-feedback">
                 </div>
@@ -100,7 +100,7 @@
 <script>
 import propertyService from "@/services/PropertyService";
 import PropertyCard from "@/components/PropertyCard";
-//import moment from "moment";
+import moment from "moment";
 export default {
   name: "application-form",
   components: {PropertyCard},
@@ -108,33 +108,33 @@ export default {
     return {
       isSubmitted: false,
       value: '',
-      application: {
+      tenant: {
         prop: '',
         firstName: '',
         lastName: '',
         occupation: '',
         state: '',
-        residents: '',
-        // date: '',
+        numberOfResidents: '',
+        moveInDate: '',
       }
     }
   },
   methods: {
     submit() {
-      const newApplicant = {
-        firstName: this.application.firstName,
-        lastName: this.application.lastName,
-        occupation: this.application.occupation,
-        state: this.application.state,
-        resident: this.application.residents,
+      const newPendingTenant = {
+        firstName: this.tenant.firstName,
+        lastName: this.tenant.lastName,
+        occupation: this.tenant.occupation,
+        state: this.tenant.state,
+        numberOfResidents: this.tenant.numberOfResidents,
         propertyId:this.$store.state.userDesiredProperty.propertyID,
         username: this.$store.state.user.username,
-        email: this.$store.state.user.username
-        //  date: moment().format("MMM Do YYYY")
+        email: this.$store.state.user.username,
+        moveInDate: moment().format("MMM Do YYYY")
       }
-      propertyService.addApplication(newApplicant)
+      propertyService.addApplication(newPendingTenant)
           .then(res => {
-        if (res.status === 200) {
+        if (res.status === 200 || res.status === 201) {
           this.isSubmitted = true;
 
         }
