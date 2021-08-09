@@ -52,6 +52,7 @@ public class JDBCTenantDAO implements TenantDAO{
 
     private Tenant mapRowToTenant(SqlRowSet row){
         Tenant tenant = new Tenant();
+        tenant.setTenantId(row.getInt("tenant_id"));
         tenant.setUsername(row.getString("email")); //setting username as email
         tenant.setAmountDue(row.getDouble("amount_due"));
         tenant.setPropertyId(row.getInt("property_id"));
