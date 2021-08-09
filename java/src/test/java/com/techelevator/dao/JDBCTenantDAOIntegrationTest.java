@@ -59,7 +59,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
                 "test", "test", "NJ", 1, LocalDate.now(), "test", "test"  );
         String approve = "Approve";
         tenant.setTenantId(12);
-        tenantDAO.approveTenant(tenant, approve);
+        tenantDAO.approveTenant(tenant.getTenantId(), approve);
 
 
         Assert.assertEquals("Approve", tenant.getApproveTenant());
