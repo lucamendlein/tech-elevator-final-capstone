@@ -16,7 +16,7 @@
           <p class="m-0"><b>Service Requests? &ensp;</b> <small v-if="tenant.workOrder">Yes </small>
           <small v-else>No</small></p>
           <p class="m-0"><b>Amount Due: &ensp;</b> ${{tenant.amountDue}} </p>
-            <button class="btn btn-outline-primary" v-on:click="updateTenantStatus('Approve')"> Approve</button>
+            <button class="btn btn-outline-primary" @click=Approved()> Approve</button>
             <button class="btn btn-outline-primary float-end">Deny</button>
           
           
@@ -36,21 +36,31 @@ props: ['tenant', 'nonSelect'],
 data() {
     return {
       visible: false,
-      approved: '',
-      denied: ''
+      approve: '',
+      tenantId: '',
+      propertyId: '',
+      userId:'',
+      firstName:'',
+      lastName: '',
+      occupation: '',
+      state: '',
+      numberOfResidents: '',
+      moveInDate: '',
+      email: '',
+      approveTenant: ''
     }
 },
   methods: {
-    setSelectedTenant(){
+    setSelectedTenant() {
       this.$store.commit("SET_SELECTED_TENANT", this.tenant);
     },
-    updateTenantStatus(approvalStatus){
+    updateTenantStatus(approvalStatus) {
 
-      this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant,  approvalStatus)
+      this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant, approvalStatus)
     },
 
     Approved() {
-      const approvedTenant= {
+      const changedTenant = {
         tenantId: this.tenant.tenantId,
         propertyId: this.tenant.propertyId,
         userId: this.tenant.userId,
@@ -62,19 +72,21 @@ data() {
         moveInDate: this.tenant.moveInDate,
         email: this.tenant.email,
         approveTenant: this.tenant.approveTenant
-    
+
       }
-      PropertyService.updateTenants(approvedTenant).then(res => {
-        if(res.status === 200 || res.status === 201 ) {
-            this.approveTenant = 'Approve';
+      PropertyService.updateTenants(changedTenant).then(res => {
+        console.log(res.data)
+        if (res.status === 200 || res.status === 201) {
+          changedTenant.approveTenant = "approve"
+
         }
       })
 
 
     }
+  }
 
 
-}
 }
 </script>
 
