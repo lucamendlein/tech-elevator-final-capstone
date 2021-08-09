@@ -6,7 +6,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -43,9 +42,9 @@ public class JDBCTenantDAO implements TenantDAO{
     }
 
     @Override
-    public void approveTenant(int tenantId, String approvalStatus) {
+    public void approveTenant(Tenant tenant, String approvalStatus) {
         String sql = "update tenant set approve_tenant = ? where tenant_id = ? ";
-        jdbcTemplate.update("update tenant set approve_tenant = ? where tenant_id = ? ", approvalStatus , tenantId);
+        jdbcTemplate.update("update tenant set approve_tenant = ? where tenant_id = ? ", approvalStatus , tenant.getTenantId());
 
 
     }
@@ -56,7 +55,7 @@ public class JDBCTenantDAO implements TenantDAO{
         tenant.setAmountDue(row.getDouble("amount_due"));
         tenant.setPropertyId(row.getInt("property_id"));
         tenant.setUserId(row.getInt("user_id"));
-        tenant.setApproveTenant(row.getString("approve_tenant"));
+        tenant.setApprove_tenant(row.getString("approve_tenant"));
         tenant.setFirstName(row.getString("first_name"));
         tenant.setLastName(row.getString("last_name"));
         tenant.setState(row.getString("state"));

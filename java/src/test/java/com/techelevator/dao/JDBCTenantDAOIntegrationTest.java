@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 import org.junit.Assert;
 import org.junit.Before;
@@ -59,10 +58,10 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
                 "test", "test", "NJ", 1, LocalDate.now(), "test", "test"  );
         String approve = "Approve";
         tenant.setTenantId(12);
-        tenantDAO.approveTenant(tenant.getTenantId(), approve);
+        tenantDAO.approveTenant(tenant, approve);
 
 
-        Assert.assertEquals("Approve", tenant.getApproveTenant());
+        Assert.assertEquals("Approve", tenant.getApprove_tenant());
 
 
     }
@@ -76,7 +75,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
         tenant.setAmountDue(amountDue);
         tenant.setPropertyId(propertyId);
         tenant.setUserId(userId);
-        tenant.setApproveTenant(approveTenant);
+        tenant.setApprove_tenant(approveTenant);
         tenant.setFirstName(firstName);
         tenant.setLastName(lastName);
         tenant.setState(state);

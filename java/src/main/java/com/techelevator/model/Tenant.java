@@ -8,7 +8,7 @@ public class Tenant {
     private String workOrder;
     private int propertyId;
     private int userId;
-    private String approveTenant;
+    private String approve_tenant;
     private String firstName;
     private String lastName;
     private String state;
@@ -21,7 +21,7 @@ public class Tenant {
     public Tenant() {
     }
 
-    public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId, String approveTenant,
+    public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId, String approve_tenant,
                   String firstName, String lastName, String state,
                   int numberOfResidents, LocalDate moveInDate, String email, String occupation,String username) {
         this.tenantId = tenantId;
@@ -29,7 +29,7 @@ public class Tenant {
         this.workOrder = workOrder;
         this.propertyId = propertyId;
         this.userId = userId;
-        this.approveTenant = approveTenant;
+        this.approve_tenant = approve_tenant;
         this.firstName = firstName;
         this.lastName = lastName;
         this.state = state;
@@ -37,6 +37,7 @@ public class Tenant {
         this.moveInDate = moveInDate;
         this.email = email;
         this.username = username;
+        this.occupation = occupation;
     }
 
     public void setUsername(String username) {
@@ -87,12 +88,12 @@ public class Tenant {
         this.userId = userId;
     }
 
-    public String getApproveTenant() {
-        return approveTenant;
+    public String getApprove_tenant() {
+        return approve_tenant;
     }
 
-    public void setApproveTenant(String approveTenant) {
-        this.approveTenant = approveTenant;
+    public void setApprove_tenant(String approve_tenant) {
+        this.approve_tenant = approve_tenant;
     }
 
     public String getFirstName() {
