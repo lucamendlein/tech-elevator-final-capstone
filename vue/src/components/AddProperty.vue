@@ -1,7 +1,9 @@
 <template>
   <div class="container p-lg-5" >
-    <div v-show="!showForm" class="form-group">
-      <a href="#" v-on:click.prevent="showForm = true">Add Property</a>
+
+
+    <div v-show="!showForm" class="form-group" block>
+      <b-button block variant="info" href="#" v-on:click.prevent="showForm = true">Add Property</b-button>
     </div>
      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <form v-if="showForm" @submit.prevent="submitForm" class="propertyForm">
@@ -41,10 +43,10 @@
           <input id="image-url" type="text" class ="form-control" v-model="property.imageUrl">
         </div>
         <div class = "form-group">
-          <input type="checkbox" for="is-studio" v-model="property.isStudio">Studio? 
+          <input type="checkbox" for="is-studio" v-model="property.isStudio">Studio?
         </div>
         <div class = "form-group">
-          <input type="checkbox" for="is-available" v-model="property.isAvailable">Available? 
+          <input type="checkbox" for="is-available" v-model="property.isAvailable">Available?
         </div>
        <button class="btn btn-primary">Submit</button>
     </form>
@@ -208,4 +210,5 @@ select.form-control {
 .status-message.error {
   background-color: #f08080;
 }
+
 </style>

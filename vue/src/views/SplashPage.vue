@@ -11,7 +11,7 @@
            <!-- <router-link v-bind:to="{ name : 'properties'}" class="properties display-6 text-light text-center carousel-caption h-20"><h4>View Available Properties
           </h4></router-link> -->
         </div>
-        <div class="jumbotron p-4 bg-light w-100 ">
+        <div class="jumbotron p-4 bg-light w-100" variant="info">
           <h1 class="display-4">Get Started!</h1>
           <p class="lead">Not all property managers are created equal. Gotham City Real Estate offers extra services and technology that set us apart.</p>
           <hr class="my-4">
