@@ -1,6 +1,6 @@
 <template>
   <div class="container w-100 h-100 d-flex flex-row flex-wrap">
-    <tenant-card v-for="tenant in this.$store.state.tenants" v-bind:key="tenant.tenantId" :tenant="tenant">
+    <tenant-card v-for="tenant in this.$store.state.tenants" v-bind:key="tenant.id" :tenant="tenant">
     </tenant-card>
     <form>
       <label></label>

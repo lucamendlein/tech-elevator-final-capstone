@@ -7,10 +7,10 @@
           <div class="card-text"> Occupation: {{ tenant.occupation}}</div>
           <div class="card-text"> State: {{tenant.state}}</div>
           <div >
-        <router-link v-if="!nonSelect" v-bind:to="{path:`/manage/${tenant.tenantId}`}" class="float-end"><b-button variant="info"
+        <!-- <router-link v-if="!nonSelect" v-bind:to="{path:`/manage/${tenant.tenantId}`}" class="float-end"><b-button variant="info"
           @click="setSelectedTenant"
 
-        >Go To Tenant</b-button></router-link>
+        >Go To Tenant</b-button></router-link> -->
         <button
             class="btn btn-outline-primary"
             @click="visible = !visible"
