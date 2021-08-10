@@ -21,7 +21,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-
+    role:  '',
     properties: [],
     tenants: [],
     property: {
@@ -104,6 +104,10 @@ export default new Vuex.Store({
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
+    },
+    SET_USER_ROLE(state, currentUser) {
+    state.role = currentUser.role;
+      
     },
     LOGOUT(state) {
       localStorage.removeItem('token');

@@ -18,7 +18,7 @@
                 <router-link v-bind:to="{name: 'register'}" class="nav-link" v-if="!$store.state.token">Register</router-link>
               </li>
               <li class="nav-item">
-                <router-link v-bind:to="{name: 'manage'}" class="nav-link" v-if="$store.state.token != ''">Manage</router-link>
+                <router-link v-bind:to="{name: 'manage'}" class="nav-link" v-if="$store.state.token != ''&& this.$store.role == PROPERTY_OWNER ">Manage</router-link>
                 </li>
                 <li class="nav-item">
                 <router-link v-bind:to="{name: 'tenant-home'}" class="nav-link" v-if="$store.state.token != ''">My Account</router-link>
@@ -33,7 +33,6 @@
     <main class="main">
       <router-view />
     </main>
-
   </div>
 </template>
 <script>
@@ -41,7 +40,6 @@ export default {
 }
 </script>
 <style>
-
 #app{
   display: flex;
   flex-direction: column;
@@ -52,10 +50,8 @@ export default {
   top:0;
   z-index: 999;
 }
-
 .main{
   flex: 1 1 0;
-  background-color: #f1f1f1;
+  background-color: #F1F1F1;
 }
-
 </style>
