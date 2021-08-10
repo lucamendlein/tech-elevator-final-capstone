@@ -1,7 +1,8 @@
 <template>
   <div id="login" class="text-center d-flex float-lg-start">
     <b-form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <img src="../../imgs/gothom_logo.png">
+<!--      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>-->
       <div
         class="alert alert-danger"
         role="alert"
@@ -13,7 +14,7 @@
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
       <div class="p-2">
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only input-group-lg">Username</label>
       <input
         type="text"
         id="username"
