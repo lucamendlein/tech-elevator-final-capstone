@@ -6,7 +6,7 @@
       <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
     </div>
     <h2 class="display-4"> Rental Application</h2>
-    <h6> For inquires about the rental property, please call (888)888-8888</h6>
+    <h6> For inquiries about the rental property, please call (888)888-8888</h6>
     <br>
     <form novalidate v-on:submit.prevent="submit">
 
@@ -56,7 +56,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label>Choose a move in date</label>
-                <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
+                <b-form-datepicker id="example-datepicker" class="mb-2"></b-form-datepicker>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
           </div>
           <div class="form-group">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck" v-model="date"
+              <input class="form-check-input" type="checkbox" checked value="" id="invalidCheck" 
                      required>
               <label class="form-check-label" for="invalidCheck">
                 Agree to terms and conditions
@@ -98,50 +98,76 @@
 </template>
 
 <script>
-import propertyService from "@/services/PropertyService";
+import PropertyService from "@/services/PropertyService";
 import PropertyCard from "@/components/PropertyCard";
-import moment from "moment";
+// import moment from "moment";
+
 export default {
   name: "application-form",
   components: {PropertyCard},
   data() {
     return {
+      errorMsg: "",
       isSubmitted: false,
       value: '',
+      // selectedMoveInDate: '',
+
       tenant: {
-        prop: '',
+        propertyId: this.$store.state.userDesiredProperty.propertyId,
+        username: this.$store.state.user.username,
+        email: this.$store.state.user.username,
         firstName: '',
         lastName: '',
         occupation: '',
         state: '',
         numberOfResidents: '',
-        moveInDate: '',
+        // moveInDate: moment().format("MMM Do YYYY").selectedMoveInDate,
       }
     }
   },
   methods: {
     submit() {
-      const newPendingTenant = {
-        firstName: this.tenant.firstName,
-        lastName: this.tenant.lastName,
-        occupation: this.tenant.occupation,
-        state: this.tenant.state,
-        numberOfResidents: this.tenant.numberOfResidents,
-        propertyId:this.$store.state.userDesiredProperty.propertyID,
-        username: this.$store.state.user.username,
-        email: this.$store.state.user.username,
-        moveInDate: moment().format("MMM Do YYYY")
-      }
-      propertyService.addApplication(newPendingTenant)
+      // const newPendingTenant = {
+      //   firstName: this.tenant.firstName,
+      //   lastName: this.tenant.lastName,
+      //   occupation: this.tenant.occupation,
+      //   state: this.tenant.state,
+      //   numberOfResidents: this.tenant.numberOfResidents,
+      //   propertyId: this.$store.state.userDesiredProperty.propertyId,
+      //   username: this.$store.state.user.username,
+      //   email: this.$store.state.user.username,
+      //   moveInDate: moment().format("MMM Do YYYY")
+      // }
+      console.log(this.tenant);
+      PropertyService.addApplication(this.tenant)
           .then(res => {
+            
         if (res.status === 200 || res.status === 201) {
           this.isSubmitted = true;
 
         }
       })
-    }
-  },
+      .catch(error => {
+            this.handleErrorResponse(error, "adding");
+          });
+    },
 
+  handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " + verb + " property. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " property. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " property. Request could not be created.";
+      }
+    }
+
+  }
 }
 
 </script>

@@ -9,6 +9,7 @@ import SplashPage from '../views/SplashPage.vue'
 import Properties from '../views/Properties.vue'
 import Manage from '../views/Manage.vue'
 import Rental from '../views/Rental.vue'
+import TenantHome from '../views/TenantHome.vue'
 
 
 Vue.use(Router)
@@ -78,7 +79,7 @@ const router = new Router({
       }
     },
     {
-      path: "/manage",
+      path: "/tenants",
       name: "manage",
       component: Manage,
       meta: {
@@ -87,14 +88,22 @@ const router = new Router({
     },
 
     {
-      path: "/rental/:propertyId",
+      path: "/properties/:propertyId",
       name: "Rental",
       component: Rental,
       meta: {
         requiresAuth: false,
         requiresRegis:true
       }
-    }
+    },
+    {
+      path: "/tenant-home",
+      name: "tenant-home",
+      component: TenantHome,
+      meta: {
+        requiresAuth: true,
+      }
+    },
   ]
 })
 

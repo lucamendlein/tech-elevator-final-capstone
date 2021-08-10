@@ -59,8 +59,8 @@ export default new Vuex.Store({
     filterPropertyPets: ''
   },
   mutations: {
-    SET_USER_DESIRED_PROPERTY(state,desiredProperty){
-      state.userDesiredProperty=desiredProperty;
+    SET_USER_DESIRED_PROPERTY(state,userDesiredProperty){
+      state.userDesiredProperty=userDesiredProperty;
     },
     SET_SELECTED_TENANT(state, selectedTenant){
       state.selectedTenant=selectedTenant;
