@@ -102,7 +102,12 @@ export default new Vuex.Store({
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
     SET_USER(state, user) {
+
+      console.log('i am here',user);
       state.user = user;
+      const authorities= user['authorities'];
+      state.role=authorities[authorities.length-1]['name']
+
       localStorage.setItem('user',JSON.stringify(user));
     },
     SET_USER_ROLE(state, currentUser) {

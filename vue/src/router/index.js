@@ -10,6 +10,7 @@ import Properties from '../views/Properties.vue'
 import Manage from '../views/Manage.vue'
 import Rental from '../views/Rental.vue'
 import TenantHome from '../views/TenantHome.vue'
+import Navbar from "@/components/Navbar";
 
 
 Vue.use(Router)
@@ -31,7 +32,7 @@ const router = new Router({
     {
       path: '/',
       name: 'splash-page',
-      component: SplashPage,
+      components: {navigation: Navbar, default: SplashPage},
       meta: {
         requiresAuth: false
       }
@@ -39,7 +40,7 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home,
+      components: {navigation: Navbar, default: Home},
       meta: {
         requiresAuth: true
       },
@@ -49,7 +50,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: Login,
+      components: {navigation: Navbar, default: Login},
       meta: {
         requiresAuth: false
       }
@@ -57,7 +58,7 @@ const router = new Router({
     {
       path: "/logout",
       name: "logout",
-      component: Logout,
+      components: {navigation: Navbar, default: Logout},
       meta: {
         requiresAuth: false
       }
@@ -65,7 +66,7 @@ const router = new Router({
     {
       path: "/register",
       name: "register",
-      component: Register,
+      components: {navigation: Navbar, default: Register},
       meta: {
         requiresAuth: false
       }
@@ -73,7 +74,7 @@ const router = new Router({
     {
       path: "/properties",
       name: "properties",
-      component: Properties,
+      components: {navigation: Navbar, default: Properties},
       meta: {
         requiresAuth: false
       }
@@ -81,7 +82,7 @@ const router = new Router({
     {
       path: "/tenants",
       name: "manage",
-      component: Manage,
+      components: {navigation: Navbar, default: Manage},
       meta: {
         requiresAuth: true
       }
@@ -90,7 +91,7 @@ const router = new Router({
     {
       path: "/properties/:propertyId",
       name: "Rental",
-      component: Rental,
+      components: {navigation: Navbar, default: Rental},
       meta: {
         requiresAuth: false,
         requiresRegis:true
@@ -99,7 +100,7 @@ const router = new Router({
     {
       path: "/tenant-home",
       name: "tenant-home",
-      component: TenantHome,
+      components: {navigation: Navbar, default: TenantHome},
       meta: {
         requiresAuth: true,
       }
