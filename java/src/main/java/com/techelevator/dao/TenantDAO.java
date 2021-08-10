@@ -11,4 +11,6 @@ public interface TenantDAO {
     List<Tenant> listPendingTenants();
 
     void approveTenant(Tenant tenant, String approveStatus);
+
+    void addWorkOrder(Tenant tenant, String workOrder);
 }
