@@ -21,6 +21,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+
     properties: [],
     tenants: [],
     property: {
