@@ -10,7 +10,7 @@ import Properties from '../views/Properties.vue'
 import Manage from '../views/Manage.vue'
 import Rental from '../views/Rental.vue'
 import TenantHome from '../views/TenantHome.vue'
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navigation/Navbar";
 
 
 Vue.use(Router)

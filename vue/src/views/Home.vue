@@ -16,7 +16,7 @@
 <script>
 
 
-import Map from "@/components/Map";
+import Map from "@/components/Navigation/Map";
 export default {
   name: "home",
   components: {Map}

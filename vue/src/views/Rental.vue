@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ApplicationForm from '@/components/ApplicationForm'
+import ApplicationForm from '@/components/Application/ApplicationForm'
 export default {
   components: {ApplicationForm}
 }

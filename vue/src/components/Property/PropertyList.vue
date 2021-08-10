@@ -12,7 +12,7 @@
 <script>
 
 import PropertyService from "@/services/PropertyService"
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard from "@/components/Property/PropertyCard";
 
 
 export default {

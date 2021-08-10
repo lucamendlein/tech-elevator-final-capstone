@@ -54,10 +54,10 @@
                 <div class="invalid-feedback">
                 </div>
               </div>
-              <div class="col-md-4 mb-3">
-                <label>Choose a move in date</label>
-                <b-form-datepicker id="example-datepicker" class="mb-2"></b-form-datepicker>
-              </div>
+<!--              <div class="col-md-4 mb-3">-->
+<!--                <label>Choose a move in date</label>-->
+<!--                <b-form-datepicker id="example-datepicker" class="mb-2"></b-form-datepicker>-->
+<!--              </div>-->
             </div>
           </div>
           <PropertyCard :property="this.$store.state.userDesiredProperty" :non-apply="true"></PropertyCard>
@@ -100,9 +100,9 @@
 </template>
 
 <script>
-import Map from "@/components/Map";
+import Map from "@/components/Navigation/Map";
 import PropertyService from "@/services/PropertyService";
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard from "@/components/Property/PropertyCard";
 // import moment from "moment";
 
 export default {

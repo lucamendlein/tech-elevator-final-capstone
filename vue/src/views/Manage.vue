@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import AddProperty from "@/components/AddProperty";
-import TenantList from "@/components/TenantList";
-import Sidebar from "@/components/Sidebar";
+import AddProperty from "@/components/Application/AddProperty";
+import TenantList from "@/components/Tenant/TenantList";
+import Sidebar from "@/components/Navigation/Sidebar";
 
 export default {
   components: {Sidebar, AddProperty, TenantList},

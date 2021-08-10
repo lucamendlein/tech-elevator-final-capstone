@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PropertyService from '../services/PropertyService.js'
+import PropertyService from '../../services/PropertyService.js'
 export default {
     name: "property-details",
     methods: {

@@ -8,7 +8,7 @@
 <script>
 
 import PropertyService from "@/services/PropertyService"
-import TenantCard from "@/components/TenantCard";
+import TenantCard from "@/components/Tenant/TenantCard";
 
 
 export default {

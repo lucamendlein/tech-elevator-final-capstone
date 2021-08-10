@@ -7,8 +7,8 @@
 
 <script>
 
-import SearchFilter from "@/components/SearchFilter";
-import PropertyList from '../components/PropertyList.vue'
+import SearchFilter from "@/components/Property/PropertyFilter";
+import PropertyList from '../components/Property/PropertyList.vue'
 
 
 export default {
