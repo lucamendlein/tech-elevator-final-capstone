@@ -4,11 +4,11 @@
       <div class="form-left-side">
           <div class=" col-xs-6 mb-3">
     <label for="service-request" class="h4">Service Request:</label>
-    <input class="form-control input-lg" id="service-request" type="text">
+    <input class="form-control input-lg"  id="service-request"  type="text">
     </div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn btn-primary" @submit="updateWorkOrder('do work')" type="submit">Submit</button>
       </form>
 </template>
 
@@ -17,15 +17,16 @@ import PropertyService from "../services/PropertyService"
 
 export default {
     name: "service-request",
+    props: ["tenant"],
     data() {
         return {
             isSubmitted: false,
-            tenant: {}
+            
         }
     },
     methods: {
         submit() {
-            PropertyService.addServiceRequest(this.tenant)
+            PropertyService.updateWorkOrder(this.tenant)
             .then(response => {
                 if (response.status === 200 || response.status === 201) {
                     this.isSubmitted = true;
@@ -50,9 +51,24 @@ export default {
           "Error " + verb + " property. Request could not be created.";
       }
     
-        }
+        },
+        updateWorkOrder(workOrder){
+       PropertyService.updateWorkOrder(this.tenant, workOrder).then(response =>{
+           console.log(this.tenant)
+           console.log(this.workOrder)
+           console.log(response.data)
+            this.$store.dispatch("getTenantList", workOrder)
+       })
+
+      
+
     }
+    }
+
+    
+    
 }
+
 </script>
 
 <style>

@@ -48,6 +48,7 @@ export default new Vuex.Store({
         numberOfResidents: '',
         moveInDate: '',
         email: '',
+        workOrder: '',
       approveTenant: ''
 
 
@@ -70,8 +71,10 @@ export default new Vuex.Store({
     APPROVE_TENANT_STATUS(state, tenant, approveTenant) {
       state.approveTenant = approveTenant;
     },
+    ADD_WORK_ORDER(state, tenant, workOrder){
+      state.workOrder = workOrder;
 
-    
+    },
     UPDATE_DISTRICT_FILTER(state, filterPropertyDistrict) {
       state.filterPropertyDistrict = filterPropertyDistrict
     },
