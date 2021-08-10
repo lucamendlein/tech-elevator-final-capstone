@@ -1,46 +1,70 @@
 <template>
   <form v-on:submit.prevent="submit">
-      <div class="d-flex flex-row">
+    <div class="d-flex flex-row">
       <div class="form-left-side">
-          <div class=" col-xs-6 mb-3">
-    <label for="service-request" class="h4">Service Request:</label>
-    <input class="form-control input-lg"  id="service-request"  type="text">
+        <div class="col-xs-6 mb-3">
+          <label for="service-request" class="h4">Service Request:</label>
+          <input
+            class="form-control input-lg"
+            v-model="tenant.workOrder"
+            id="service-request"
+            type="text"
+          />
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" @submit="updateWorkOrder('do work')" type="submit">Submit</button>
-      </form>
+    <button class="btn btn-primary" v-bind:to="{path:`/tenant-home/${this.tenant.userId}`}" @submit="submit" type="submit">
+      Submit
+    </button>
+  </form>
 </template>
 
 <script>
-import PropertyService from "../services/PropertyService"
+import PropertyService from "../services/PropertyService";
 
 export default {
-    name: "service-request",
-    props: ["tenant"],
-    data() {
-        return {
-            isSubmitted: false,
-            
-        }
+  name: "service-request",
+  // props: ["tenant"],
+  data() {
+    return {
+      isSubmitted: false,
+      tenant: {
+        tenantId: "",
+        userId: this.$store.state.user.userId,  
+        propertyId: "",
+        username: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        occupation: "",
+        approvalStatus: "",
+        state: "",
+        numberOfResidents: "",
+        workOrder: "",
+        amountDue: "",
+        moveInDate: ""
+      },
+    };
+  },
+  methods: {
+    submit() {
+      PropertyService.updateWorkOrder(this.tenant)
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            this.isSubmitted = true;
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
     },
-    methods: {
-        submit() {
-            PropertyService.updateWorkOrder(this.tenant)
-            .then(response => {
-                if (response.status === 200 || response.status === 201) {
-                    this.isSubmitted = true;
-                }
-            })
-            .catch(error => {
-                this.handleErrorResponse(error, "adding");
-            });
-        },
 
-        handleErrorResponse(error, verb) {
-            if (error.response) {
+    handleErrorResponse(error, verb) {
+      if (error.response) {
         this.errorMsg =
-          "Error " + verb + " property. Response received was '" +
+          "Error " +
+          verb +
+          " property. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
@@ -50,27 +74,10 @@ export default {
         this.errorMsg =
           "Error " + verb + " property. Request could not be created.";
       }
-    
-        },
-        updateWorkOrder(workOrder){
-       PropertyService.updateWorkOrder(this.tenant, workOrder).then(response =>{
-           console.log(this.tenant)
-           console.log(this.workOrder)
-           console.log(response.data)
-            this.$store.dispatch("getTenantList", workOrder)
-       })
-
-      
-
-    }
-    }
-
-    
-    
-}
-
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

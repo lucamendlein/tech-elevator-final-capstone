@@ -19,8 +19,8 @@ export default {
     updateTenants(tenant,status){
         return axios.put(`/tenants/${status}`, tenant)
     },
-     updateWorkOrder(tenant, workOrder){
-         return axios.put('/tenant-home', tenant, workOrder)
+     updateWorkOrder(tenant){
+         return axios.put(`/tenant-home/${tenant.userId}`, tenant)
      }
 
 }

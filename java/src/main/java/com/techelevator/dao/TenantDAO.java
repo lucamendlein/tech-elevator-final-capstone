@@ -12,5 +12,5 @@ public interface TenantDAO {
 
     void approveTenant(Tenant tenant, String approveStatus);
 
-    void addWorkOrder(Tenant tenant, String workOrder);
+    void addWorkOrder(Tenant tenant, int tenantId);
 }
