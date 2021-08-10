@@ -18,6 +18,9 @@ export default {
     },
     updateTenants(tenant){
         return axios.put(`/tenants/${tenant.tenantId}`, tenant)
+    },
+    addServiceRequest(tenant){
+        return axios.put(`/tenants/${tenant.tenantId}/tenant-home`, tenant)
     }
 
 }
