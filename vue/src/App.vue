@@ -20,6 +20,9 @@
               <li class="nav-item">
                 <router-link v-bind:to="{name: 'manage'}" class="nav-link" v-if="$store.state.token != ''">Manage</router-link>
                 </li>
+                <li class="nav-item">
+                <router-link v-bind:to="{name: 'tenant-home'}" class="nav-link" v-if="$store.state.token != ''">My Account</router-link>
+                </li>
               <li class="nav-item">
                 <router-link class=" btn btn-outline-secondary nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </li>
