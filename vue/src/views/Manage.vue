@@ -27,7 +27,7 @@ export default {
         title: "Manage",
         links: [
           {
-            name: 'add-property',route : '/add-property'
+            name: 'add-property',route : '/add_property'
           },
           {
             name: 'external contact',route : '/send-email'

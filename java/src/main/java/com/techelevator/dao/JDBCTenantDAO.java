@@ -30,8 +30,7 @@ public class JDBCTenantDAO implements TenantDAO{
     @Override
     public List<Tenant> listPendingTenants() {
         String sql = "select tenant_id, amount_due, property_id, user_id , approve_tenant, first_name, last_name, state, number_of_residents, move_in_date, email, occupation " +
-                "from tenant  " +
-                "where approve_tenant = 'Pending'";
+                "from tenant  ";
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
         List<Tenant> pendingTenants = new ArrayList<Tenant>();
         while(rows.next()){

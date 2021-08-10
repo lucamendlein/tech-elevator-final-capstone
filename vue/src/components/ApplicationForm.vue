@@ -85,12 +85,14 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-info" type="submit" >Submit form</button>
         </div>
+
 
       </div>
 
     </form>
+    <Map class="float-end"/>
 
 
   </div>
@@ -98,13 +100,14 @@
 </template>
 
 <script>
+import Map from "@/components/Map";
 import PropertyService from "@/services/PropertyService";
 import PropertyCard from "@/components/PropertyCard";
 // import moment from "moment";
 
 export default {
   name: "application-form",
-  components: {PropertyCard},
+  components: {PropertyCard, Map},
   data() {
     return {
       errorMsg: "",

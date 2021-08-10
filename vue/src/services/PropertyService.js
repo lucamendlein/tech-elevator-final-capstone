@@ -16,8 +16,8 @@ export default {
     getTenants(){
         return axios.get('/tenants')
     },
-    updateTenants(tenant){
-        return axios.put(`/tenants/${tenant.tenantId}`, tenant)
+    updateTenants(tenant,status){
+        return axios.put(`/tenants/${status}`, tenant)
     }
 
 }

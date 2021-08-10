@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import PropertyService from "@/services/PropertyService";
 
 Vue.use(Vuex)
 
@@ -109,6 +110,13 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    }
+  },
+  actions:{
+    getTenantList(context){
+      PropertyService.getTenants().then(res =>
+          context.commit("GET_TENANT_LIST",res.data)
+      )
     }
   }
 })
