@@ -31,9 +31,9 @@ public class TenantController {
         return tenantDAO.listPendingTenants();
     }
 
-    @RequestMapping(path = "/tenants/{id}", method = RequestMethod.PUT)
-    public void updateTenant(@RequestBody Tenant tenant, @PathVariable(name="id") int tenantId) {
-        tenantDAO.approveTenant(tenant);
+    @RequestMapping(path = "/tenants/{updateStatus}", method = RequestMethod.PUT)
+    public void updateTenant(@RequestBody Tenant tenant,  @PathVariable(name="updateStatus") String approvalStatus) {
+        tenantDAO.approveTenant(tenant, approvalStatus);
     }
 
 }

@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <h1> Property location</h1>
+    <h3> Property location</h3>
     <GmapMap
         :center="{lat:10, lng:10}"
         :zoom="7"

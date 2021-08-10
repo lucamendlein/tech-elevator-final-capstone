@@ -17,7 +17,7 @@
           <hr class="my-4">
           
           <p class="lead">
-            <router-link v-bind:to="{ name : 'properties'}"><a class="btn btn-primary btn-lg" role="button">View Available Properties</a></router-link>
+            <router-link v-bind:to="{ name : 'properties'}"><a class="btn btn-info btn-lg" role="button">View Available Properties</a></router-link>
           </p>
         </div>
         <!-- <div class="jumbotron p-4 bg-light w-100 ">
