@@ -17,9 +17,9 @@ public class WorkOrderController {
     }
 
     @RequestMapping(path = "/work-orders/{id}", method = RequestMethod.POST)
-    public WorkOrder addWorkOrder(@RequestBody WorkOrder workOrder, @PathVariable(name = "id") int userId, Principal principal) {
+    public WorkOrder addWorkOrder(@RequestBody WorkOrder workOrder, @PathVariable(name = "id") int userId, String name, Principal principal) {
 
-        workOrderDAO.addWorkOrder(workOrder, userId, principal.getName());
+        workOrderDAO.addWorkOrder(workOrder, userId, name);
         return workOrder;
     }
 }
