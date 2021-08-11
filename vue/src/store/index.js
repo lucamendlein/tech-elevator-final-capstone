@@ -50,7 +50,8 @@ export default new Vuex.Store({
         numberOfResidents: '',
         moveInDate: '',
         email: '',
-      approveTenant: ''
+      approveTenant: '', 
+      amountDue: ''
 
 
     },
