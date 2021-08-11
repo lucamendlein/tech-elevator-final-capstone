@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import PropertyService from "@/services/PropertyService";
+//import PropertyService from "@/services/PropertyService";
 export default {
 
 props: ['tenant', 'nonSelect'],
