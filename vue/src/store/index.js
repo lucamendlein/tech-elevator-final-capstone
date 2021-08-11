@@ -54,11 +54,7 @@ export default new Vuex.Store({
 
 
     },
-    workOrder: {
-      workOrder: '',
-      workOrderImg: '',
-      userId: currentUser.userId,
-    },
+  
     selectedTenant: undefined,
     userDesiredProperty: undefined,
     filterPropertyDistrict: '',
