@@ -50,10 +50,14 @@ export default new Vuex.Store({
         numberOfResidents: '',
         moveInDate: '',
         email: '',
-        workOrder: '',
       approveTenant: ''
 
 
+    },
+    workOrder: {
+      workOrder: '',
+      workOrderImg: '',
+      userId: currentUser.userId,
     },
     selectedTenant: undefined,
     userDesiredProperty: undefined,
@@ -61,7 +65,7 @@ export default new Vuex.Store({
     filterPropertyBedrooms: '',
     filterPropertyBathrooms: '',
     filterPropertyPrice: '',
-    filterPropertyPets: ''
+    filterPropertyPets: '',
   },
   mutations: {
     SET_USER_DESIRED_PROPERTY(state,userDesiredProperty){

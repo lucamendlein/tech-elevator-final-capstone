@@ -15,10 +15,10 @@ public class JDBCWorkOrderDAO implements WorkOrderDAO {
     }
 
     @Override
-    public void addWorkOrder(WorkOrder workOrder, int userId, String name) {
+    public void addWorkOrder(WorkOrder workOrder) {
         { String sql = "Insert Into work_order (work_order_id, work_order, work_order_img, user_id)" +
-                "values (default, ?, ?, (select user_id from users where username = ?)) returning work_order_id";
-            SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, workOrder.getWorkOrder(), workOrder.getWorkOrderImg(), name);
+                "values (default, ?, ?, ?) returning work_order_id";
+            SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, workOrder.getWorkOrder(), workOrder.getWorkOrderImg(), workOrder.getUserId());
             rows.next();
             workOrder.setWorkOrderId(rows.getInt("work_order_id"));
 

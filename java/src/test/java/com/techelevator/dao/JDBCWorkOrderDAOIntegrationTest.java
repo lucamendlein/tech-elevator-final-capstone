@@ -26,7 +26,7 @@ public class JDBCWorkOrderDAOIntegrationTest extends DAOIntegrationTest{
 
         WorkOrder workOrder = getWorkOrder("plz", "dowork", userId);
 
-        workOrderDAO.addWorkOrder(workOrder,userId, username);
+        workOrderDAO.addWorkOrder(workOrder);
         Assert.assertTrue(workOrder.getWorkOrderId() > 0);
         String sql = "select work_order_id from work_order where work_order_id = ?";
         WorkOrder workOrderFromDatabase = new WorkOrder();
