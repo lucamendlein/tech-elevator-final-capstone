@@ -3,11 +3,15 @@
     <div class="side-bar">
 
       <Sidebar :options="side_bar_options"/>
+      
     </div>
     <div class="right-side">
       <TenantList/>
     </div>
-
+    <div>
+      
+    </div>
+<email />
 
   </div>
 
@@ -16,9 +20,12 @@
 <script>
 import TenantList from "@/components/Tenant/TenantList";
 import Sidebar from "@/components/Navigation/Sidebar";
+import Email from '../components/Manage/Email.vue';
+
+
 
 export default {
-  components: {Sidebar, TenantList},
+  components: {Sidebar, TenantList, Email},
   data() {
     return {
       side_bar_options:{
@@ -31,7 +38,7 @@ export default {
             name: 'Add Property',route : '/add_property'
           },
           {
-            name: 'Contact Tenants',route : '/send-email'
+            name: 'email',route : '/email'
           },
 
         ]
