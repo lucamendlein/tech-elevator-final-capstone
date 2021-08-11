@@ -43,13 +43,13 @@ export default {
       workOrder: {
           workOrder: '',
           workOrderImg: '',
-        //   userId: this.$store.state.userId
+         userId: this.$store.state.user.id
       },
     };
   },
   methods: {
     submit() {
-      PropertyService.addWorkOrder(this.$store.state.workOrder)
+      PropertyService.addWorkOrder(this.workOrder)
         .then((response) => {
           if (response.status === 200 || response.status === 201) {
             this.isSubmitted = true;
