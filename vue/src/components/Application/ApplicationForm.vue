@@ -126,6 +126,7 @@ export default {
         occupation: '',
         state: '',
         numberOfResidents: '',
+        amountDue: this.$store.state.userDesiredProperty.price
         // moveInDate: moment().format("MMM Do YYYY").selectedMoveInDate,
       }
     }

@@ -39,7 +39,7 @@ data() {
       approve: '',
       tenantId: '',
       propertyId: '',
-      userId:'',
+      userId: this.$store.state.user.id,
       firstName:'',
       lastName: '',
       occupation: '',

@@ -13,6 +13,7 @@ import TenantHome from '../views/TenantHome.vue'
 import Navbar from "@/components/Navigation/Navbar";
 import AddProperty from "@/components/Application/AddProperty";
 import ServiceRequest from "@/components/ServiceRequest";
+import Email from "@/components/Manage/Email";
 
 
 Vue.use(Router)
@@ -123,6 +124,14 @@ const router = new Router({
         requiresAuth: true,
       }
     },
+    {
+      path: "/email",
+      name: "email",
+      component: {navigation: Navbar, default:Email},
+      meta: {
+        requiresAuth: true,
+      }
+    }
   ]
 })
 
