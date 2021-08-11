@@ -21,6 +21,9 @@ export default {
     },
      addWorkOrder(workOrder){
          return axios.post('/work-orders', workOrder)
+     },
+     payRent(tenant){
+         return axios.patch(`/tenants/rent/${tenant.userId}`, tenant)
      }
 
 }

@@ -12,5 +12,6 @@ public interface TenantDAO {
 
     void approveTenant(Tenant tenant, String approveStatus);
 
+    void payTenantRent(Tenant tenant, int userId);
 
 }

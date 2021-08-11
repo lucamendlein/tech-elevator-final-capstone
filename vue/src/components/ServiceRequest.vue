@@ -1,11 +1,9 @@
 <template>
-
+<div class = "container">
+  <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
+      Service Request Submitted Successfully.
+      </div>
   <form v-on:submit.prevent="submit" >
-    <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
-      Application submitted Successfully.
-      <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
-    </div>
-
     <div class="d-flex flex-row">
       <div class="form-left-side">
         <div class="col-xs-6 mb-3">
@@ -35,7 +33,7 @@
     </button>
     </div>
   </form>
-
+  </div>
 </template>
 
 <script>

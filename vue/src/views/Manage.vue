@@ -3,7 +3,7 @@
     <div class="side-bar">
 
       <Sidebar :options="side_bar_options"/>
-      <email />
+      
     </div>
     <div class="right-side">
       <TenantList/>
@@ -11,7 +11,7 @@
     <div>
       
     </div>
-
+<email />
 
   </div>
 
