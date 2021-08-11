@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Tenant {
     private int tenantId;
     private double amountDue;
-    private String workOrder;
+
     private int propertyId;
     private int userId;
     private String approvalStatus;
@@ -21,12 +21,11 @@ public class Tenant {
     public Tenant() {
     }
 
-    public Tenant(int tenantId, double amountDue, String workOrder, int propertyId, int userId, String approvalStatus,
+    public Tenant(int tenantId, double amountDue,  int propertyId, int userId, String approvalStatus,
                   String firstName, String lastName, String state,
                   int numberOfResidents, LocalDate moveInDate, String email, String occupation,String username) {
         this.tenantId = tenantId;
         this.amountDue = amountDue;
-        this.workOrder = workOrder;
         this.propertyId = propertyId;
         this.userId = userId;
         this.approvalStatus = approvalStatus;
@@ -64,13 +63,6 @@ public class Tenant {
         this.amountDue = amountDue;
     }
 
-    public String getWorkOrder() {
-        return workOrder;
-    }
-
-    public void setWorkOrder(String workOrder) {
-        this.workOrder = workOrder;
-    }
 
     public int getPropertyId() {
         return propertyId;

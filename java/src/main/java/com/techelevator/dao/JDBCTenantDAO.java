@@ -48,11 +48,7 @@ public class JDBCTenantDAO implements TenantDAO{
 
     }
 
-    @Override
-    public void addWorkOrder(Tenant tenant, int tenantId) {
-        String sql = "update tenant set work_order = ? where user_id = ?";
-        jdbcTemplate.update(sql, tenant.getWorkOrder(), tenant.getUserId());
-    }
+
 
     private Tenant mapRowToTenant(SqlRowSet row){
         Tenant tenant = new Tenant();
