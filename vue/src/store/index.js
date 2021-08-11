@@ -17,6 +17,7 @@ if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
+
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
@@ -119,6 +120,7 @@ export default new Vuex.Store({
     },
     SET_USER_ID(state,currentUser){
       state.userId = currentUser.userId;
+      console.log(currentUser)
     },
     LOGOUT(state) {
       localStorage.removeItem('token');

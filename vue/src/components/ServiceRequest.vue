@@ -1,26 +1,43 @@
 <template>
-  <form >
+  <form v-on:submit.prevent="submit" >
     <div class="d-flex flex-row">
       <div class="form-left-side">
         <div class="col-xs-6 mb-3">
-          <label for="service-request" class="h4">Service Request:</label>
+          <label for="workOrder" class="h4">Service Request:</label>
           <input
-            class="form-control input-lg"
+            class="form-control input-lg" v-model="workOrder.workOrder"
             
-            id="service-request"
+            id="workOrder"
             type="text"
+          />
+          <label for="workOrderImg" class="h4">Upload Photo:</label>
+          <input
+              class="form-control input-lg" v-model="workOrder.workOrderImg"
+
+              id="workOrderImg"
+              type="text"
+          />
+          <label for="userId" class="h4">provide userId:</label>
+          <input
+              class="form-control input-lg" v-model="workOrder.userId"
+
+              id="userId"
+              type="text"
           />
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" v-bind:to="{path:`/tenant-home/${tenant.userId}`}" @click="setSelectedTenant">
+    <div>
+
+    <button type="submit" class="btn btn-primary">
       Submit
     </button>
+    </div>
   </form>
 </template>
 
 <script>
-// import PropertyService from "../services/PropertyService";
+import PropertyService from "../services/PropertyService";
 
 export default {
   name: "service-request",
@@ -28,59 +45,43 @@ export default {
   data() {
     return {
       isSubmitted: false,
-      tenant: {
-        tenantId: "",
-        userId: this.$store.state.user.userId,  
-        propertyId: "",
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        occupation: "",
-        approvalStatus: "",
-        state: "",
-        numberOfResidents: "",
-        workOrder: "",
-        amountDue: "",
-        moveInDate: ""
+      workOrder: {
+        workOrder: '',
+        workOrderImg:'',
+        userId:''
       },
     };
   },
   methods: {
-    setSelectedTenant(){
-      this.$store.commit("SET_SELECTED_TENANT", this.tenant)
-    }
-  }
-  // methods: {
-  //   submit() {
-  //     PropertyService.updateWorkOrder(this.tenant)
-  //       .then((response) => {
-  //         if (response.status === 200 || response.status === 201) {
-  //           this.isSubmitted = true;
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         this.handleErrorResponse(error, "adding");
-  //       });
-  //   },
+    submit() {
+      PropertyService.addWorkOrder(this.workOrder)
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            this.isSubmitted = true;
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
+    },
 
-  //   handleErrorResponse(error, verb) {
-  //     if (error.response) {
-  //       this.errorMsg =
-  //         "Error " +
-  //         verb +
-  //         " property. Response received was '" +
-  //         error.response.statusText +
-  //         "'.";
-  //     } else if (error.request) {
-  //       this.errorMsg =
-  //         "Error " + verb + " property. Server could not be reached.";
-  //     } else {
-  //       this.errorMsg =
-  //         "Error " + verb + " property. Request could not be created.";
-  //     }
-  //   },
-  // },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " property. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " property. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " property. Request could not be created.";
+      }
+    },
+  },
 };
 </script>
 

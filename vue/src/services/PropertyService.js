@@ -20,7 +20,7 @@ export default {
         return axios.put(`/tenants/${status}`, tenant)
     },
      addWorkOrder(workOrder){
-         return axios.put(`/work-orders/${workOrder.userId}`, workOrder)
+         return axios.post(`/work-orders/${workOrder.userId}`, workOrder)
      }
 
 }
