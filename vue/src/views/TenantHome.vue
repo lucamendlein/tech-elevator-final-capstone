@@ -2,6 +2,7 @@
 <div>
 
  <router-link v-bind:to="{name: 'service-request'}"> <b-button  >Add Service Request</b-button></router-link>
+ <router-link v-bind:to="{name: 'pay-rent'}"> <b-button>Pay Rent</b-button></router-link>
   </div>
 </template>
 

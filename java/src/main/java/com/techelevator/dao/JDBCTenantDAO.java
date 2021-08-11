@@ -44,11 +44,13 @@ public class JDBCTenantDAO implements TenantDAO{
     public void approveTenant(Tenant tenant, String approval_status) {
         String sql = "update tenant set approve_tenant = ? where tenant_id = ? ";
         jdbcTemplate.update(sql, approval_status , tenant.getTenantId());
-
-
     }
 
-
+    @Override
+    public void payTenantRent(Tenant tenant, int userId) {
+        String sql = "update tenant set amount_due = 0 where user_id = ?";
+        jdbcTemplate.update(sql, tenant.getUserId());
+    }
 
     private Tenant mapRowToTenant(SqlRowSet row){
         Tenant tenant = new Tenant();

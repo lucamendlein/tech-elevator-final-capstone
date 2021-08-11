@@ -36,6 +36,10 @@ public class TenantController {
         tenantDAO.approveTenant(tenant, approvalStatus);
     }
 
+    @RequestMapping(path = "/tenants/rent/{id}", method = RequestMethod.PATCH)
+    public void payTenantRent(@RequestBody Tenant tenant, @PathVariable(name="id") int userId) {
+        tenantDAO.payTenantRent(tenant, userId);
+    }
 
 
 }

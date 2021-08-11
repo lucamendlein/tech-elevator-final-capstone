@@ -14,6 +14,7 @@ import Navbar from "@/components/Navigation/Navbar";
 import AddProperty from "@/components/Application/AddProperty";
 import ServiceRequest from "@/components/ServiceRequest";
 import Email from "@/components/Manage/Email";
+import PayRent from "../components/PayRent"
 
 
 Vue.use(Router)
@@ -120,6 +121,14 @@ const router = new Router({
       path: "/work-orders",
       name: "service-request",
       components: {navigation: Navbar, default:ServiceRequest},
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: "/tenants/rent",
+      name: "pay-rent",
+      components: {navigation: Navbar, default: PayRent},
       meta: {
         requiresAuth: true,
       }
