@@ -12,6 +12,7 @@ import Rental from '../views/Rental.vue'
 import TenantHome from '../views/TenantHome.vue'
 import Navbar from "@/components/Navigation/Navbar";
 import AddProperty from "@/components/Application/AddProperty";
+import ServiceRequest from "@/components/ServiceRequest";
 
 
 Vue.use(Router)
@@ -110,6 +111,14 @@ const router = new Router({
       path: "/add_property",
       name: "add_property",
       components: {navigation: Navbar, default: AddProperty},
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: "/work-orders",
+      name: "service-request",
+      components: {navigation: Navbar, default:ServiceRequest},
       meta: {
         requiresAuth: true,
       }
