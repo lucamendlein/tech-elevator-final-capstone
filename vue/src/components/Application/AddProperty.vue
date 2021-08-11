@@ -2,11 +2,11 @@
   <div class="container p-lg-5" >
 
 
-    <div v-show="!showForm" class="form-group" block>
-      <b-button block variant="info" href="#" v-on:click.prevent="showForm = true">Add Property</b-button>
-    </div>
-     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
-    <form v-if="showForm" @submit.prevent="submitForm" class="propertyForm">
+<!--    <div v-show="!showForm" class="form-group" block>-->
+<!--      <b-button block variant="info" href="#" v-on:click.prevent="showForm = true">Add Property</b-button>-->
+<!--    </div>-->
+<!--     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>-->
+    <form  @submit.prevent="submitForm" class="propertyForm">
        <div class="form-group">
         <label for="address-line-1">Address Line 1: </label>
         <input id="address-line-1" type="text" class="form-control" v-model="property.addressLine1">
@@ -62,7 +62,6 @@ export default {
   name: "add-property",
   data(){
     return {
-      showForm: false,
       property: {},
       errorMsg: "",
     };

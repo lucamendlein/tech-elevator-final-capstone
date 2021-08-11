@@ -59,15 +59,7 @@ data() {
     //   this.$store.commit('APPROVE_TENANT_STATUS', this.tenant.approveTenant, approvalStatus)
     // },
 
-    updateTenant(status) {
 
-      PropertyService.updateTenants(this.tenant,status).then(res => {
-        console.log(res.data);
-        this.$store.dispatch("getTenantList");
-      })
-
-
-    }
   }
 
 

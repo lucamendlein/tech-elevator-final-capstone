@@ -13,7 +13,7 @@
 
       <div>
 
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-row justify-content-between">
           <div class="form-left-side">
             <div class="form-row">
               <div class="col-md-6 mb-3">
@@ -61,6 +61,8 @@
             </div>
           </div>
           <PropertyCard :property="this.$store.state.userDesiredProperty" :non-apply="true"></PropertyCard>
+
+          <Map class="map-class"/>
         </div>
 
 
@@ -92,7 +94,7 @@
       </div>
 
     </form>
-    <Map class="float-end"/>
+
 
 
   </div>
@@ -181,6 +183,9 @@ export default {
   width: 50%;
 }
 
+.map-class{
+  margin-left: 1rem;
+}
 .hide {
   display: none !important;
 }

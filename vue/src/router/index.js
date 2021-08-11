@@ -11,6 +11,7 @@ import Manage from '../views/Manage.vue'
 import Rental from '../views/Rental.vue'
 import TenantHome from '../views/TenantHome.vue'
 import Navbar from "@/components/Navigation/Navbar";
+import AddProperty from "@/components/Application/AddProperty";
 
 
 Vue.use(Router)
@@ -101,6 +102,14 @@ const router = new Router({
       path: "/tenant-home",
       name: "tenant-home",
       components: {navigation: Navbar, default: TenantHome},
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: "/add_property",
+      name: "add_property",
+      components: {navigation: Navbar, default: AddProperty},
       meta: {
         requiresAuth: true,
       }

@@ -5,7 +5,6 @@
       <Sidebar :options="side_bar_options"/>
     </div>
     <div class="right-side">
-      <AddProperty/>
       <TenantList/>
     </div>
 
@@ -15,26 +14,26 @@
 </template>
 
 <script>
-import AddProperty from "@/components/Application/AddProperty";
 import TenantList from "@/components/Tenant/TenantList";
 import Sidebar from "@/components/Navigation/Sidebar";
 
 export default {
-  components: {Sidebar, AddProperty, TenantList},
+  components: {Sidebar, TenantList},
   data() {
     return {
       side_bar_options:{
         title: "Manage",
         links: [
           {
-            name: 'add-property',route : '/add_property'
+            name: 'Tenants',route : '/tenants'
           },
           {
-            name: 'external contact',route : '/send-email'
+            name: 'Add Property',route : '/add_property'
           },
           {
-            name: 'Tenants List',route : '/tenants-list'
-          }
+            name: 'Contact Tenants',route : '/send-email'
+          },
+
         ]
       }
     }
@@ -45,7 +44,7 @@ export default {
 <style>
 .side-bar {
   background: white;
-  width: 11%;
+  width: 200px;
   height: 100%;
 }
 

@@ -20,6 +20,6 @@ export default {}
 
 .main {
   flex: 1 1 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1 !important;
 }
 </style>

@@ -2,9 +2,14 @@
 
   <div>
     <div class="sidenav">
-      <div class="login-main-text">
-        <h2>Application<br> Login Page</h2>
-        <p>Login or register from here to access.</p>
+      <div class="login-main-text d-flex flex-column justify-content-center align-items-center">
+
+        <img class="logo-img" :src="logo">
+        <div class="my-3">
+          <h2>Gotham City<br> Real Estate</h2>
+        </div>
+
+
       </div>
     </div>
     <div class="main">
@@ -58,7 +63,7 @@
 
 <script>
 import authService from "../services/AuthService";
-
+import logo from '../../imgs/logo.svg'
 export default {
   name: "login",
   components: {},
@@ -68,6 +73,7 @@ export default {
         username: "",
         password: ""
       },
+      logo:logo,
       invalidCredentials: false
     };
   },
@@ -135,7 +141,7 @@ body {
 
 @media screen and (min-width: 768px){
   .main{
-    margin-left: 40%;
+    margin-left: 57%;
   }
 
   .sidenav{
@@ -171,4 +177,7 @@ body {
   color: #fff;
 }
 
+.logo-img{
+  width: 90px;
+}
 </style>
