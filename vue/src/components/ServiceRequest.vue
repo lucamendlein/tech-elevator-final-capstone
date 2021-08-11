@@ -10,6 +10,7 @@
             id="workOrder"
             type="text"
           />
+          
           <label for="workOrderImg" class="h4">Upload Photo:</label>
           <input
               class="form-control input-lg" v-model="workOrder.workOrderImg"
@@ -17,13 +18,7 @@
               id="workOrderImg"
               type="text"
           />
-          <label for="userId" class="h4">provide userId:</label>
-          <input
-              class="form-control input-lg" v-model="workOrder.userId"
-
-              id="userId"
-              type="text"
-          />
+          
         </div>
       </div>
     </div>
@@ -46,15 +41,15 @@ export default {
     return {
       isSubmitted: false,
       workOrder: {
-        workOrder: '',
-        workOrderImg:'',
-        userId:''
+          workOrder: '',
+          workOrderImg: '',
+        //   userId: this.$store.state.userId
       },
     };
   },
   methods: {
     submit() {
-      PropertyService.addWorkOrder(this.workOrder)
+      PropertyService.addWorkOrder(this.$store.state.workOrder)
         .then((response) => {
           if (response.status === 200 || response.status === 201) {
             this.isSubmitted = true;
@@ -81,6 +76,10 @@ export default {
           "Error " + verb + " property. Request could not be created.";
       }
     },
+
+    getCurrentId(userId){
+        this.$store.commit("SET_USER_ID", userId)
+    }
   },
 };
 </script>

@@ -16,10 +16,10 @@ public class WorkOrderController {
         this.workOrderDAO = workOrderDAO;
     }
 
-    @RequestMapping(path = "/work-orders/{id}", method = RequestMethod.POST)
-    public WorkOrder addWorkOrder(@RequestBody WorkOrder workOrder, @PathVariable(name = "id") int userId, String name, Principal principal) {
+    @RequestMapping(path = "/work-orders", method = RequestMethod.POST)
+    public WorkOrder addWorkOrder(@RequestBody WorkOrder workOrder) {
 
-        workOrderDAO.addWorkOrder(workOrder, userId, name);
+        workOrderDAO.addWorkOrder(workOrder);
         return workOrder;
     }
 }
