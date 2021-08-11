@@ -4,5 +4,5 @@ import com.techelevator.model.WorkOrder;
 
 public interface WorkOrderDAO {
 
-    void addWorkOrder(WorkOrder workOrder, int userId);
+    void addWorkOrder(WorkOrder workOrder, int userId, String name);
 }

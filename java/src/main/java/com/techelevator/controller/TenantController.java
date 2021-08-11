@@ -36,9 +36,6 @@ public class TenantController {
         tenantDAO.approveTenant(tenant, approvalStatus);
     }
 
-    @RequestMapping(path = "/tenant-home/{id}", method = RequestMethod.PUT)
-    public void addWorkOrder(@RequestBody Tenant tenant , @PathVariable(name = "id") int userId){
-        tenantDAO.addWorkOrder(tenant, userId);
-    }
+
 
 }
