@@ -6,7 +6,7 @@
 
     </div>
     <div class="right-side">
-      <img :src="logo">
+      <img class="col-md-6 col-md-12 p-lg-5" :src="logo">
     </div>
     <div>
 
@@ -47,7 +47,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+img {
+  /*margin-left: 500px;*/
+  /*height: 30%;*/
+
+}
+
+
 .side-bar {
   background: white;
   width: 400px;

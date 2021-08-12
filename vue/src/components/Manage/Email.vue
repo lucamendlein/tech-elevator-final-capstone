@@ -84,9 +84,8 @@ export default {
 
 <style>
 .form {
-  display: block;
   margin-left: auto;
-  width: 100%;
+  width: 500px;
 
 
 }

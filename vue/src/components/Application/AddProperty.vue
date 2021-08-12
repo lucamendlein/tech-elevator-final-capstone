@@ -16,7 +16,7 @@
 <!--      <b-button block variant="info" href="#" v-on:click.prevent="showForm = true">Add Property</b-button>-->
 <!--    </div>-->
 <!--     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>-->
-    <form  @submit.prevent="submitForm" class="propertyForm">
+    <form  @submit.prevent="submitForm" class="propertyForm col-md-6 col-md-12 p-lg-5">
        <div class="form-group">
         <label for="address-line-1">Address Line 1: </label>
         <input id="address-line-1" type="text" class="form-control" v-model="property.addressLine1">
@@ -152,6 +152,11 @@ export default {
 .propertyForm {
   padding: 10px;
   margin-bottom: 10px;
+
+}
+.right-side {
+  width: 600px;
+
 }
 .form-group {
   margin-bottom: 10px;
