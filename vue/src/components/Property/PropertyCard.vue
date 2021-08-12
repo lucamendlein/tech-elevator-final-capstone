@@ -1,13 +1,13 @@
 <template>
 
-  <div v-if="property" class="builidng-card card d-flex align-items-center justify-content-center m-2">
+  <div v-if="property" class="builidng-card card d-flex align-items-left justify-content-center m-2">
 
     <img class="card-img-top" :src="property.imageUrl">
     <div class="card-body">
       <div class="p-2">
         <h6 class="card-title">{{property.district}}</h6>
         <div class="card-title">{{ property.addressLine1 }}</div>
-        <div class="card-text">${{ property.price }} /mo "utilities are not included"</div>
+        <div class="card-text">${{ property.price }} /mo</div>
         <div class="card-text">{{property.bedrooms}} Bedrooms</div>
       </div>
       <div >
@@ -15,8 +15,8 @@
           @click="setDesiredProperty"
 
         >Apply</b-button></router-link>
-        <button
-            class="btn btn-outline-primary"
+        <button 
+            class="btn btn-outline-info"
             @click="visible = !visible"
 
         >More

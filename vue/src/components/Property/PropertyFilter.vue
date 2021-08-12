@@ -3,7 +3,7 @@
     <div class="w-75 card d-flex flex-row flex-wrap justify-content-between">
       <div class="p-2 px-4">
         <label class="fw-bold">District: </label>
-        <b-dropdown class="btn btn-outline-primary border-0 bg-transparent text-primary" :text="selectedDistrict ? selectedDistrict : 'Any'" block variant="outline-primary" >
+        <b-dropdown class="btn btn-outline-info border-0 bg-transparent text-info" :text="selectedDistrict ? selectedDistrict : 'Any'" block variant="outline-info" >
           <b-dropdown-item @click="setDistrict('')" class="border-bottom">All </b-dropdown-item>
           <b-dropdown-item @click=" setDistrict(district)" class="border-bottom" v-for="district in districtList" :key="district" href="#">{{district}}</b-dropdown-item>
         </b-dropdown>
@@ -11,7 +11,7 @@
       </div>
       <div class="p-2 px-4">
         <label class="fw-bold">Bedroom Size: </label>
-        <b-dropdown class="btn btn-outline-primary border-0 bg-transparent text-primary" :text="selectedBedrooms ? selectedBedrooms : 'Any'" block variant="outline-primary" >
+        <b-dropdown class="btn btn-outline-info border-0 bg-transparent text-info" :text="selectedBedrooms ? selectedBedrooms : 'Any'" block variant="outline-info" >
           <b-dropdown-item @click="setBedroomSize('')" class="border-bottom">Any </b-dropdown-item>
           <b-dropdown-item @click="setBedroomSize(2)" class="border-bottom">2 </b-dropdown-item>
           <b-dropdown-item @click="setBedroomSize(3)" class="border-bottom">3 </b-dropdown-item>
@@ -22,7 +22,7 @@
       </div>
       <div class="p-2 px-4">
         <label class="fw-bold">Bathroom Size: </label>
-        <b-dropdown class="btn btn-outline-primary border-0 bg-transparent text-primary" :text="selectedBathrooms ? selectedBathrooms : 'Any'" block variant="outline-primary" >
+        <b-dropdown class="btn btn-outline-info border-0 bg-transparent text-info" :text="selectedBathrooms ? selectedBathrooms : 'Any'" block variant="outline-info" >
           <b-dropdown-item @click="setBathroomSize('')" class="border-bottom">Any </b-dropdown-item>
           <b-dropdown-item @click="setBathroomSize(1)" class="border-bottom">1 </b-dropdown-item>
           <b-dropdown-item @click="setBathroomSize(2)" class="border-bottom">2 </b-dropdown-item>
@@ -34,7 +34,7 @@
       </div>
       <div class="p-2 px-4">
         <label class="fw-bold">Price: </label>
-        <b-dropdown class="btn btn-outline-primary border-0 bg-transparent text-primary" :text="selectedPrice ? selectedPrice : 'Any'" block variant="outline-primary" >
+        <b-dropdown class="btn btn-outline-info border-0 bg-transparent text-primary" :text="selectedPrice ? selectedPrice : 'Any'" block variant="outline-info" >
           <b-dropdown-item @click="setPropertyPrice(undefined)" class="border-bottom">Any </b-dropdown-item>
           <b-dropdown-item @click="setPropertyPrice(600)" class="border-bottom">$600 </b-dropdown-item>
           <b-dropdown-item @click="setPropertyPrice(800)" class="border-bottom">$800 </b-dropdown-item>

@@ -1,10 +1,10 @@
 <template>
   <div class="container">
 
-    <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
-      Application submitted Successfully.
-      <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
-    </div>
+   <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
+     Application submitted Successfully.
+     <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
+   </div>
     <h2 class="display-4"> Rental Application</h2>
     <h6> For inquiries about the rental property, please call (888)888-8888</h6>
     <br>
@@ -62,7 +62,7 @@
           </div>
           <PropertyCard :property="this.$store.state.userDesiredProperty" :non-apply="true"></PropertyCard>
 
-          <Map class="map-class"/>
+          <Map class="map-class" />
         </div>
 
 

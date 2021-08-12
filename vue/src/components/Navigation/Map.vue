@@ -22,11 +22,13 @@
 
 export default {
   name: "Map",
-  //props:['location'],
+  // props:['location'],
   data() {
     return {
       markers: [],
-      center: {lat:39.971686, lng:-82.763592}
+      center: 
+      {lat:40.761769874711455, lng:-73.97176020192381}
+      
     }
   },
   created() {
