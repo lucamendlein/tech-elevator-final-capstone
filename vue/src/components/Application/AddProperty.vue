@@ -1,5 +1,9 @@
 <template>
-  <div class="container p-lg-5" >
+  <div class="container p-lg-5 col-md-6 col-sm-12" >
+    <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
+      Property added Successfully!
+      <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
+    </div>
 
 
 <!--    <div v-show="!showForm" class="form-group" block>-->
@@ -48,7 +52,7 @@
         <div class = "form-group">
           <input type="checkbox" for="is-available" v-model="property.isAvailable">Available?
         </div>
-       <button class="btn btn-primary">Submit</button>
+       <button class="btn btn-info">Submit</button>
     </form>
   </div>
 
@@ -64,6 +68,7 @@ export default {
     return {
       property: {},
       errorMsg: "",
+      isSubmitted: false
     };
   },
   methods: {
@@ -74,6 +79,7 @@ export default {
             if (response.status === 200 || response.status === 201) {
               alert("Property successfully added")
               console.log(response.data)
+              this.isSubmitted = true;
             }
           })
           .catch(error => {
