@@ -3,25 +3,28 @@
   <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Service Request Submitted Successfully.
       </div>
+  <p-6> Here at Gotham City Real Estate, we take our service requests very seriously. Please give a detailed description of what needs repaired or replaced.
+    We will definitely get to it in timely manner!
+  GCR management</p-6>
   <form v-on:submit.prevent="submit" >
     <div class="d-flex flex-row">
       <div class="form-left-side">
-        <div class="col-xs-6 mb-3">
+        <div class="col-xs-6 mb-3 py-5">
           <label for="workOrder" class="h4">Service Request:</label>
-          <input
+          <textarea
             class="form-control input-lg" v-model="workOrder.workOrder"
             
             id="workOrder"
             type="text"
           />
           
-          <label for="workOrderImg" class="h4">Upload Photo:</label>
-          <input
-              class="form-control input-lg" v-model="workOrder.workOrderImg"
+<!--          <label for="workOrderImg" class="h4">Upload Photo:</label>-->
+<!--          <input-->
+<!--              class="form-control input-lg" v-model="workOrder.workOrderImg"-->
 
-              id="workOrderImg"
-              type="text"
-          />
+<!--              id="workOrderImg"-->
+<!--              type="text"-->
+<!--          />-->
           
         </div>
       </div>
