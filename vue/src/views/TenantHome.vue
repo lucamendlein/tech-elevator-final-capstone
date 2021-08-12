@@ -6,7 +6,7 @@
 
     </div>
     <div class="right-side">
-      <img class="col-md-6 col-md-12 p-lg-5" :src="logo">
+      <img class="img col-md-6 col-md-12 p-lg-5" :src="logo">
     </div>
     <div>
 
@@ -49,9 +49,10 @@ export default {
 
 <style scoped>
 
-img {
-  /*margin-left: 500px;*/
-  /*height: 30%;*/
+.img {
+  margin-left: 250px;
+  margin-top: 100px;
+   height: 50%; 
 
 }
 
