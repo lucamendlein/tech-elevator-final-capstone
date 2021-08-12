@@ -1,16 +1,18 @@
 <template>
 
 <div class = "container">
-    <p class = "lead"> Rent is due every month on the 1st of the month.  If you have provided the property manager with your credit card information, you 
-        can pay your rent through this portal.</p>
-  <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
+    <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Rent Paid Successfully.
       </div>
+    <p></p>
+    <p class = "lead"> Rent is due every month on the 1st of the month.  If you have provided the property manager with your credit card information, you 
+        can pay your rent through this portal.</p>
+  
   <form v-on:submit.prevent="submit" >
     
     <div>
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-info">
       Pay Rent
     </button>
     </div>
