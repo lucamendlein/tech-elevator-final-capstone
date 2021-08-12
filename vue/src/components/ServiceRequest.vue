@@ -3,7 +3,11 @@
   <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Service Request Submitted Successfully.
       </div>
-  <p-6> Here at Gotham City Real Estate, we take our service requests very seriously. Please give a detailed description of what needs repaired or replaced.
+      <p>
+
+          
+      </p>
+  <p-6 class="lead"> Here at Gotham City Real Estate, we take our service requests very seriously. Please give a detailed description of what needs repaired or replaced.
     We will definitely get to it in timely manner!
   GCR management</p-6>
   <form v-on:submit.prevent="submit" >
