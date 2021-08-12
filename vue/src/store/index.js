@@ -48,7 +48,6 @@ export default new Vuex.Store({
         occupation: '',
         state: '',
         numberOfResidents: '',
-        moveInDate: '',
         email: '',
       approveTenant: '', 
       amountDue: ''

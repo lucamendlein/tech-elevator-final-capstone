@@ -13,7 +13,6 @@ public class Tenant {
     private String lastName;
     private String state;
     private int numberOfResidents;
-    private LocalDate moveInDate;
     private String email;
     private String occupation;
     private String username;
@@ -23,7 +22,7 @@ public class Tenant {
 
     public Tenant(int tenantId, double amountDue,  int propertyId, int userId, String approvalStatus,
                   String firstName, String lastName, String state,
-                  int numberOfResidents, LocalDate moveInDate, String email, String occupation,String username) {
+                  int numberOfResidents,  String email, String occupation,String username) {
         this.tenantId = tenantId;
         this.amountDue = amountDue;
         this.propertyId = propertyId;
@@ -33,7 +32,6 @@ public class Tenant {
         this.lastName = lastName;
         this.state = state;
         this.numberOfResidents = numberOfResidents;
-        this.moveInDate = moveInDate;
         this.email = email;
         this.username = username;
         this.occupation = occupation;
@@ -118,14 +116,6 @@ public class Tenant {
 
     public void setNumberOfResidents(int numberOfResidents) {
         this.numberOfResidents = numberOfResidents;
-    }
-
-    public LocalDate getMoveInDate() {
-        return moveInDate;
-    }
-
-    public void setMoveInDate(LocalDate moveInDate) {
-        this.moveInDate = moveInDate;
     }
 
     public String getEmail() {
