@@ -1,13 +1,15 @@
 <template>
-  <div class="container">
+  <div class="d-flex flex-row h-100 w-100">
+    <div class="side-bar">
+       <Sidebar :options="side_bar_options"/>
+      </div>
+      <div class="right-side">
     <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Email sent Successfully!
     </div>
-    <form class="contact-form p-2" @submit="sendEmail">
-
-
+    <form class="contact-form" @submit="sendEmail">
       <div class="form">
-        <div class="col-md-4 col-sm-12 p-lg-5">
+        <div class="col-md-6 col-md-12 p-lg-5">
 
           <div class="form-group">
             <label for="name">Name</label>
@@ -24,20 +26,39 @@
           <input type="submit" value="Send">
         </div>
       </div>
+      
 
     </form>
+    </div>
   </div>
 </template>
 
 
 <script>
 import emailjs from 'emailjs-com';
+import Sidebar from "@/components/Navigation/Sidebar";
 
 export default {
   name: 'email',
+  components: {Sidebar},
   data() {
     return {
       isSubmitted: false,
+      side_bar_options:{
+        title: "Manage",
+        links: [
+          {
+            name: 'View Tenants',route : '/tenants'
+          },
+          {
+            name: 'Add Property',route : '/add_property'
+          },
+          {
+            name: 'Send Email',route : '/email'
+          },
+
+        ]
+      }
 
     }
   },
@@ -65,7 +86,7 @@ export default {
 .form {
   display: block;
   margin-left: auto;
-  width: 80%;
+  width: 100%;
 
 
 }

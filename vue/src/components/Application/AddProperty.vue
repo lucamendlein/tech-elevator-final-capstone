@@ -1,5 +1,11 @@
 <template>
-  <div class="container p-lg-5 col-md-6 col-sm-12" >
+  <div class="d-flex flex-row h-100 w-100" >
+    <div class="side-bar">
+
+      <Sidebar :options="side_bar_options"/>
+      
+    </div>
+    <div class="right-side">
     <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Property added Successfully!
       <button @click="isSubmitted=false" class="btn btn-outline-dark border-0 bg-transparent float-end"> x</button>
@@ -55,17 +61,35 @@
        <button class="btn btn-info">Submit</button>
     </form>
   </div>
+  </div>
 
 </template>
 
 
 <script>
 import PropertyService from "@/services/PropertyService";
+import Sidebar from "@/components/Navigation/Sidebar";
 
 export default {
+  components: {Sidebar},
   name: "add-property",
   data(){
     return {
+      side_bar_options:{
+       title: "Manage",
+        links: [
+          {
+            name: 'View Tenants',route : '/tenants'
+          },
+          {
+            name: 'Add Property',route : '/add_property'
+          },
+          {
+            name: 'Send Email',route : '/email'
+          },
+
+        ]
+      },
       property: {},
       errorMsg: "",
       isSubmitted: false
