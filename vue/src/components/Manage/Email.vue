@@ -28,7 +28,7 @@ export default {
     name: 'email',
   methods: {
     sendEmail: (e) => {
-      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'user_dThbFBb0TWQ6SMTZYRhcb')
+      emailjs.sendForm('service_9wt1nw9', 'template_zg1326b', e.target, 'user_dThbFBb0TWQ6SMTZYRhcb')
         .then((result) => {
             console.log('SUCCESS!', result.status, result.text);
         }, (error) => {
