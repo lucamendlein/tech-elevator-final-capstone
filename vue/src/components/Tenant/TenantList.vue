@@ -1,5 +1,5 @@
 <template>
-  <div class="container m-5 p-5 d-flex flex-row flex-wrap bg-white">
+  <div class="container m-5 p-4 d-xl-flex flex-wrap bg-white">
 <!--    <tenant-card v-for="tenant in this.$store.state.tenants" v-bind:key="tenant.tenantId" :tenant="tenant">-->
 <!--    </tenant-card>-->
     <b-table striped hover :items="tenantsList">
@@ -92,4 +92,5 @@ export default {
 </script>
 
 <style>
+
 </style>
