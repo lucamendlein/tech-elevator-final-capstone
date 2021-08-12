@@ -6,7 +6,7 @@
 
     </div>
     <div class="right-side">
-      <img src="'../../imgs/logo.svg'">
+      <img :src="logo">
     </div>
     <div>
 
@@ -21,7 +21,7 @@
 <script>
 
 
-
+import logo from '../../imgs/logo.svg'
 import Sidebar from "@/components/Navigation/Sidebar";
 export default {
   components: {Sidebar},
@@ -39,8 +39,10 @@ export default {
 
 
         ]
-      }
+      },
+      logo:logo,
     }
+
   }
 }
 </script>
