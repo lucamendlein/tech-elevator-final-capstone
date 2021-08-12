@@ -26,7 +26,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
         String username = "user";
 
         Tenant tenant = getTenant(0, propertyId,5, "pending",
-                "test", "test", "NJ", 1, LocalDate.now(), username, "test"  );
+                "test", "test", "NJ", 1,  username, "test"  );
         tenantDAO.requestTenant(tenant, propertyId);
         Assert.assertTrue(tenant.getTenantId() > 0);
         String sql = "select tenant_id from tenant where tenant_id = ?;";
@@ -55,7 +55,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
     @Test
     public void should_update_approve_tenant(){
         Tenant tenant = getTenant(0, 3,1, "Pending",
-                "test", "test", "NJ", 1, LocalDate.now(), "test", "test"  );
+                "test", "test", "NJ", 1,  "test", "test"  );
 
         tenant.setTenantId(12);
         //tenantDAO.approveTenant(tenant);
@@ -69,7 +69,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
 
     private Tenant getTenant(double amountDue, int propertyId, int userId,
                              String approveTenant, String firstName, String lastName, String state, int numberOfResidents,
-                             LocalDate moveInDate, String email, String occupation){
+                              String email, String occupation){
         Tenant tenant = new Tenant();
         tenant.setUsername(email); //setting username as email
         tenant.setAmountDue(amountDue);
@@ -80,7 +80,7 @@ public class JDBCTenantDAOIntegrationTest extends DAOIntegrationTest{
         tenant.setLastName(lastName);
         tenant.setState(state);
         tenant.setNumberOfResidents(numberOfResidents);
-        tenant.setMoveInDate(moveInDate);
+
         tenant.setEmail(email);
         tenant.setOccupation(occupation);
         return tenant;
