@@ -20,12 +20,14 @@
                 class="alert alert-danger"
                 role="alert"
                 v-if="invalidCredentials"
-            >Invalid username and password!</div>
+            >Invalid username and password!
+            </div>
             <div
                 class="alert alert-success p-5"
                 role="alert"
                 v-if="this.$route.query.registration"
-            >Thank you for registering, please sign in.</div>
+            >Thank you for registering, please sign in.
+            </div>
             <div class="py-2">
               <label for="username" class="sr-only input-group-lg">Username</label>
               <input
@@ -49,7 +51,9 @@
             </div>
 
             <button type="submit" class="btn btn-black">Sign in</button>
-            <router-link :to="{ name: 'register' }"> <button type="submit" class="btn btn-secondary mx-3">Register</button></router-link>
+            <router-link :to="{ name: 'register' }">
+              <button type="submit" class="btn btn-secondary mx-3">Register</button>
+            </router-link>
             <div>
 
             </div>
@@ -64,6 +68,7 @@
 <script>
 import authService from "../services/AuthService";
 import logo from '../../imgs/logo.svg'
+
 export default {
   name: "login",
   components: {},
@@ -73,7 +78,7 @@ export default {
         username: "",
         password: ""
       },
-      logo:logo,
+      logo: logo,
       invalidCredentials: false
     };
   },
@@ -106,8 +111,7 @@ body {
 }
 
 
-
-.main-head{
+.main-head {
   height: 150px;
   background: #FFF;
 
@@ -126,25 +130,27 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {
+    padding-top: 15px;
+  }
 }
 
 @media screen and (max-width: 450px) {
-  .login-form{
+  .login-form {
     margin-top: 10%;
   }
 
-  .register-form{
+  .register-form {
     margin-top: 10%;
   }
 }
 
-@media screen and (min-width: 768px){
-  .main{
+@media screen and (min-width: 768px) {
+  .main {
     margin-left: 57%;
   }
 
-  .sidenav{
+  .sidenav {
     width: 40%;
     position: fixed;
     z-index: 1;
@@ -152,32 +158,32 @@ body {
     left: 0;
   }
 
-  .login-form{
+  .login-form {
     margin-top: 80%;
   }
 
-  .register-form{
+  .register-form {
     margin-top: 20%;
   }
 }
 
 
-.login-main-text{
+.login-main-text {
   margin-top: 20%;
   padding: 60px;
   color: #fff;
 }
 
-.login-main-text h2{
+.login-main-text h2 {
   font-weight: 300;
 }
 
-.btn-black{
+.btn-black {
   background-color: #000 !important;
   color: #fff;
 }
 
-.logo-img{
+.logo-img {
   width: 90px;
 }
 </style>

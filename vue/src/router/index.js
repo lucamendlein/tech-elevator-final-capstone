@@ -136,7 +136,7 @@ const router = new Router({
     {
       path: "/email",
       name: "email",
-      component: {navigation: Navbar, default:Email},
+      components: {navigation: Navbar, default:Email},
       meta: {
         requiresAuth: true,
       }

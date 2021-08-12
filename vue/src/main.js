@@ -12,10 +12,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
+
 Vue.config.productionTip = false;
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyB9oWGi6vYuEhv21B6rsjt-6MlTCSpJ9_c'
+    key: "AIzaSyDaANXtb--5mO-NGs8f9sIrfds2Du8Yhc4",
   }
 })
 Vue.use(BootstrapVue);

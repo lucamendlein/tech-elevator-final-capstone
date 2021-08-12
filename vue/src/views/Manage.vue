@@ -11,7 +11,7 @@
     <div>
       
     </div>
-<email />
+
 
   </div>
 
@@ -20,12 +20,11 @@
 <script>
 import TenantList from "@/components/Tenant/TenantList";
 import Sidebar from "@/components/Navigation/Sidebar";
-import Email from '../components/Manage/Email.vue';
 
 
 
 export default {
-  components: {Sidebar, TenantList, Email},
+  components: {Sidebar, TenantList},
   data() {
     return {
       side_bar_options:{
