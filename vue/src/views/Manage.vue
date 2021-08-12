@@ -31,13 +31,13 @@ export default {
         title: "Manage",
         links: [
           {
-            name: 'Tenants',route : '/tenants'
+            name: 'View Tenants',route : '/tenants'
           },
           {
             name: 'Add Property',route : '/add_property'
           },
           {
-            name: 'email',route : '/email'
+            name: 'Send Email',route : '/email'
           },
 
         ]
