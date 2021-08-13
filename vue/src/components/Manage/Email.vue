@@ -7,7 +7,7 @@
     <div :class="'m-1 alert alert-success alert-dismissible  '  + (isSubmitted ? 'show' :'hide') " role="alert">
       Email sent Successfully!
     </div>
-    <form class="contact-form" @submit="sendEmail">
+    <form class="contact-form" @submit.prevent="sendEmail">
       <div class="form">
         <div class="col-md-6 col-md-12 p-lg-5">
 
