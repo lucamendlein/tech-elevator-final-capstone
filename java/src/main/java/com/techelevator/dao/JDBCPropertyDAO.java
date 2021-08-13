@@ -36,10 +36,10 @@ public class JDBCPropertyDAO implements PropertyDAO{
     @Override
     public void createProperty(Property property, String username) {
         String sql = "insert into property (property_id, address_line_1, address_line_2, district, " +
-                "square_footage, bedrooms, bathrooms, price, pets, studio, available) " +
-                "values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning property_id ";
+                "square_footage, bedrooms, bathrooms, price, pets, studio, available, image_url) " +
+                "values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning property_id ";
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, property.getAddressLine1(), property.getAddressLine2(), property.getDistrict(), property.getSquareFootage(),
-                 property.getBedrooms(), property.getBathrooms(), property.getPrice(), property.isAllowsPets(), property.isStudio(), property.isAvailable());
+                 property.getBedrooms(), property.getBathrooms(), property.getPrice(), property.isAllowsPets(), property.isStudio(), property.isAvailable(), property.getImageUrl());
         rows.next();
         property.setPropertyId(rows.getInt("property_id"));
 
